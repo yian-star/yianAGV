@@ -1,0 +1,266 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>N8 4楼平面图</title>
+    <style>
+        .table4F {
+            color: white;
+            width: 98%;
+            height: 98%;
+            border-spacing: 0 0;
+            border-collapse: separate;
+            text-align: center;
+            margin-left: 1%;
+            margin-right: 1%;
+            margin-bottom: 1%;
+        }
+
+        .table4F td {
+            height: 40px;
+            border: 1px #eee8e2 solid;
+        }
+
+        span {
+            background-color: #79aec8;
+            font-size: 10px;
+        }
+
+        .image-container4F {
+            height: 30px; /* 固定高度，如果需要的话 */
+            overflow: hidden; /* 隐藏超出td的内容 */
+        {#display: flex; /* 使用flex布局使图片居中 */#} justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            white-space: nowrap; /* 防止图片换行 */
+        }
+
+        .image-container4F img {
+            max-width: 100%; /* 图片最大宽度为td的宽度 */
+            height: 100%; /* 保持图片的原始宽高比 */
+            /* 设置图片之间的间隔 */
+            margin-right: 10px; /* 根据需要调整 */
+        }
+
+        .image-container4F span {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 100%;height: 100%">
+    <table class="table4F">
+        <tr>
+            <td style="width: 6%;height: 10%"></td>
+            <td style="width: 6%;"></td>
+            <td style="width: 60%"></td>
+            <td style="width: 6%"></td>
+            <td style="width: 22%" rowspan="4"></td>
+        </tr>
+        <tr>
+            <td style="height: 10%"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="height: 10%"></td>
+            <td></td>
+              <td class="image-container4F">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="height: 10%"></td>
+            <td></td>
+            <td class="image-container4F">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="height: 10%" colspan="5">
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td></td>
+                        <td style="width: 5%;background-color: green" id="charging4F01">充电区</td>
+                        <td style="width: 5%" id="car4F01">待命点</td>
+                        <td style="width: 5%" id="Upshif"></td>
+                        <td style="width: 18%" id="Updownroad"></td>
+                        <td style="width: 5%" id="downshif"></td>
+                        <td style="width: 28%;"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="height: 10%" colspan="5">
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td class="image-container4F">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                            <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                            <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                            <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                            <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                        </td>
+                        <td style="width: 5%" class="image-container4F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                        </td>
+                        <td style="width: 18%" class="image-container4F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                            <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                        </td>
+                        <td style="width: 5%" class="image-container4F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                        </td>
+                        <td style="width: 28%;" class="image-container4F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                            <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                            <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="height: 10%" colspan="5"></td>
+        </tr>
+        <tr>
+            <td style="height: 10%" colspan="5"></td>
+        </tr>
+        <tr>
+            <td style="height: 20%" colspan="5">员工出入口</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+<script>
+    //滚筒 4F01
+    setInterval(function () {
+        fetch('/roller_agv')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {
+                    let obj4F01 = {
+                        'car4F01': [569, 568, 567],
+                        'charging4F01': [570],
+                        'Upshif': [561, 560, 547, 559],
+                        'downshif': [562, 563, 564, 565],
+                        'Updownroad': [548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 566],
+
+                    };
+                    for (let item of data['rollerdata']) {
+                        //当车子的点位在3楼的时候
+                        if (item.carId === '4F01') {
+                            //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                            var img4F01 = document.getElementById("roller4F01move"); // 获取图片元素
+                            //现在需要获取点位的目标位置呀，我的宝
+                            var duration = 2000; // 移动的持续时间，单位为毫秒
+                            var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                            var currentStep = 0; // 当前步数，用于控制动画效果
+                            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                            if (img4F01) {
+                                var startX = document.getElementById("roller4F01move").offsetLeft; // 起始位置的左边距
+                                var startY = document.getElementById("roller4F01move").offsetTop; // 起始位置的上边距
+                                //要获取目标位置了，要遍历整个
+                                let keyWithValue = '';
+                                for (let key in obj4F01) {
+                                    if (obj4F01[key].includes(Number(item.currentPoint))) {
+                                        keyWithValue = key;
+
+                                        function getOffsetRelativeTo(element, container) {
+                                            var offsetX = 0;
+                                            var offsetY = 0;
+                                            while (element && element !== container) {
+                                                offsetX += element.offsetLeft;
+                                                offsetY += element.offsetTop;
+                                                element = element.offsetParent;
+                                            }
+                                            return {offsetX: offsetX, offsetY: offsetY};
+                                        }
+
+                                        var move3Element = document.getElementById(keyWithValue);
+                                        var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+                                        var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                        var endX4F01 = offset.offsetX;
+                                        var endY4F01 = offset.offsetY;
+                                        endX4F01 = endX4F01 - 40;
+                                        endY4F01 = endY4F01 - 110;
+                                        var moveImage = function () {
+                                            if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                            if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                img4F01.style.left = (startX + currentStep * (endX4F01 - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                img4F01.style.top = (startY + currentStep * (endY4F01 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                currentStep++; // 增加步数
+                                            } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                img4F01.style.left = endX4F01 + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                img4F01.style.top = endY4F01 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                clearInterval(intervalId); // 停止动画效果
+                                            }
+                                        };
+                                        intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                        break;
+                                    }
+                                }
+
+                            } else {
+                                //这里的地标要处理
+                                let site = Number(item.currentPoint);
+                                console.log("抓到楼:", site)
+                                const keyForValue336 = Object.entries(obj4F01).find(([key, value]) => value.includes(site))?.[0];
+                                console.log("抓到楼:", keyForValue336)
+                                let car2 = document.getElementById(keyForValue336);
+                                //这里有很大的问题呢
+                                car2.innerHTML = '<div id="roller4F01move" style="position: absolute">4F01<img  style="width: 100%;height: 100%;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+                            }
+                        }
+                    }
+                }
+            )
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 3000)
+</script>
+</html>

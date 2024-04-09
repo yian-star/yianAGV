@@ -1,0 +1,431 @@
+{% load static %}
+{#<img src="{% static 'img/tea.png' %}" style="height: 100%;margin-left: 1%;">#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1F jacking AGV</title>
+    <style>
+        .table1F {
+            background-color: #FFFFFF;
+            color: #100f0f;
+            width: 98%;
+            border-spacing: 0 0;
+            border-collapse: separate;
+            text-align: center;
+        {#opacity: 0.9;#} margin-left: 1%;
+            margin-right: 1%;
+            margin-bottom: 1%;
+            border: 1px solid #fafafa;
+        {#transform: skew(-60deg);#}{#transform: rotate(5deg);#}
+        }
+
+        .table1F td {
+            height: 20px;
+        }
+
+        .oneF {
+            text-align: right;
+        {#width: 20%;#} background-color: #f6f6b9;
+            border-bottom: 8px solid #fafafa;
+            background-image: url("{% static 'img/line.png' %}");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        {#opacity: 0.9;#}
+        }
+
+        .Fwork {
+            text-align: right;
+            background-color: #eaeab3;
+        {#width: 15%;#} border-bottom: 8px solid #fdfeff;
+            background-image: url("{% static 'img/line.png' %}");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .Froad {
+        {#background-color: #b0eab0;#} width: 1%;
+            width: 20px;
+        }
+
+        span {
+            background-color: #79aec8;
+            font-size: 10px;
+        }
+
+        img {
+        {#transform: skew(60deg)#}
+        }
+
+    </style>
+</head>
+<body>
+<div style="width: 100%;height: 100%">
+    <h1 style="color: white;text-align: center">N8一楼 顶升AGV 轨迹</h1>
+    <table class="table1F">
+        <tr>
+            <td></td>
+            <td></td>
+            <td style="height: 30px;"></td>
+            <td style="height: 30px;">
+                <img src="{% static 'img/tea.png' %}" style="height: 100%;margin-left: 1%;">
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad"></td>
+            <td class="Froad" ></td>
+            <td class="Froad" id="tea"></td>
+            <td class="Froad"></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="fire"></td>
+            <td class="Froad"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad" id="L108"></td>
+            <td class="Froad"></td>
+            <td></td>
+            <td class="oneF" colspan="3">
+                <span>108</span>
+            </td>
+            <td class="Froad" id="L1081"></td>
+            <td></td>
+            <td class="Fwork" colspan="2">
+                <span>Ver tex</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 0.3%;writing-mode: vertical-rl;font-size: 10px;background-image: url('{% static 'img/elevator.png' %}');background-size: cover"
+                id="elevator1F"></td>
+            <td class="Froad" id="elevatorregion"></td>
+            <td class="Froad" id="L107"></td>
+            <td class="oneF" colspan="4">
+                <span>107</span>
+            </td>
+            <td class="Froad" id="L1071"></td>
+            <td></td>
+            <td class="Fwork" colspan="2">
+                <span>Jalama ENH</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad" rowspan="2"></td>
+            <td class="Froad" id="L106" rowspan="2"></td>
+            <td class="oneF" colspan="4" rowspan="2">
+                <span>106</span>
+            </td>
+            <td class="Froad" id="L1061" rowspan="2"></td>
+            <td class="Froad" id="CTS"></td>
+            <td class="Fwork" colspan="2">
+                <span>Calgary</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td ></td>
+            <td class="Fwork" colspan="2">
+                <span>Chariot-TB</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="L105"></td>
+            <td class="oneF" colspan="4">
+                <span>105</span>
+            </td>
+            <td class="Froad" id="L1051"></td>
+            <td></td>
+            <td class="Fwork" colspan="2">
+                <span>GAC</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad"></td>
+            <td class="Froad" ID="l104"></td>
+            <td class="oneF" colspan="4">
+                <span>104</span>
+            </td>
+            <td class="Froad" id="L1041"></td>
+            <td rowspan="2" style="border-bottom: 0;background-color: rgba(225,224,186,0.88)">库房</td>
+            <td class="Fwork" colspan="2">
+                <span>PDR1</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="L103"></td>
+            <td class="oneF" colspan="4">
+                <span>103</span>
+            </td>
+            <td class="Froad" id="L1031"></td>
+            <td class="Fwork" style="border-bottom: 0" colspan="2">
+                <span>PDR2</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="L102"></td>
+            <td class="oneF" colspan="4">
+                <span>102</span>
+            </td>
+            <td class="Froad" id="L1021"></td>
+            <td></td>
+            <td class="Fwork" style="border-top:8px solid #121e41" colspan="2">
+                <span>PDR3</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #e3beaf;font-size: 10px" rowspan="3">AGV待命点</td>
+            <td class="Froad"></td>
+            <td class="Froad" id="L101" rowspan="3"></td>
+            <td rowspan="3" style="border-bottom: 0;background-color: #f3eab2;text-align: right" id="PDlibrary">PD库房
+            </td>
+            <td class="oneF" rowspan="3" style="border-bottom: 0">
+
+            </td>
+            <td rowspan="3" id="middle101"></td>
+            <td class="oneF" rowspan="3" style="border-bottom: 0">
+                <span>101</span>
+            </td>
+            <td class="Froad" id="L1011" rowspan="3"></td>
+            <td class="Fwork" colspan="3">办公 机柜</td>
+            <td class="Froad" id="work109"></td>
+        </tr>
+        <tr>
+            <td class="Froad"></td>
+            <td class="Fwork" colspan="3">
+                <span>10C</span>
+            </td>
+            <td class="Froad" id="C10"></td>
+        </tr>
+        <tr>
+            <td class="Froad"></td>
+            <td class="Fwork" colspan="3" style="border-bottom: 0">
+                <span>10A</span>
+            </td>
+            <td class="Froad" id="A10"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad"></td>
+            <td class="Froad"></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="wharf"></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="product"></td>
+            <td class="Froad" id="secure1"></td>
+            <td class="Froad" id="elevator11"></td>
+            <td class="Froad" id="VIP"></td>
+            <td class="Froad"></td>
+            <td class="Froad"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="background-color: #79aec8">码头</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="writing-mode: vertical-rl;font-size: 10px;height: 6%">
+                <img style="width: 100%;height: 50%;transform: rotate(90deg)" src="{% static 'img/Access.JPG' %}">
+                <p style="background-color: #00bb00;font-size: 9px">员工出入口</p>
+            </td>
+            <td style="font-size: 12px;background-image: url('{% static 'img/elevator.png' %}');background-size: cover;color: #00bb00"></td>
+            <td style="writing-mode: vertical-rl;background-color: #00bb00;font-size: 12px">VIP通道</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    setInterval(function () {
+        fetch('/agv_route')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {//处理返回的数据
+                var L101 = document.getElementById("L101");
+                var L102 = document.getElementById("L102");
+                var L103 = document.getElementById("L103");
+                var L104 = document.getElementById("L104");
+                var L105 = document.getElementById("L105");
+                var L106 = document.getElementById("L106");
+                var L107 = document.getElementById("L107");
+                var L108 = document.getElementById("L108");
+                var L1011 = document.getElementById("L1011");//1F看板
+                var L1021 = document.getElementById("L1021");
+                var L1031 = document.getElementById("L1031");
+                var L1041 = document.getElementById("L1041");
+                var L1051 = document.getElementById("L1051");
+                var L1061 = document.getElementById("L1061");
+                var L1071 = document.getElementById("L1071");
+                var L1081 = document.getElementById("L1081");
+                var elevator11 = document.getElementById("elevator11");
+                var tea = document.getElementById("tea");
+                var C10 = document.getElementById("C10");
+                var A10 = document.getElementById("A10");
+                var work109 = document.getElementById("work109");
+                var secure1 = document.getElementById("secure1");
+                var VIP = document.getElementById("VIP");
+                var fire = document.getElementById("fire");
+                var middle101 = document.getElementById("middle101");
+                var elevator1F = document.getElementById("elevator1F");
+                var PDlibrary = document.getElementById("PDlibrary");
+                var elevatorregion = document.getElementById("elevatorregion");
+                var product = document.getElementById("product");
+                var wharf = document.getElementById("wharf");
+                var CTS = document.getElementById("CTS");
+                for (let item of data['data']) {
+                    //CTS : 706、707、708、636
+                    if (item.CurrSite == 706 || item.CurrSite == 707 || item.CurrSite == 708 || item.CurrSite == 636) {
+                        CTS.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //码头561、523、404、715、524、710、525、518、601、526、527
+                    if (item.CurrSite == 561 || item.CurrSite == 523 || item.CurrSite == 404 || item.CurrSite == 715 || item.CurrSite == 524 || item.CurrSite == 710 || item.CurrSite == 525 || item.CurrSite == 518 || item.CurrSite == 601 || item.CurrSite == 526 || item.CurrSite == 527) {
+                        wharf.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //成品647、634
+                    if (item.CurrSite == 647 || item.CurrSite == 634) {
+                        product.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //1F PD庫房	596、375、519、648、520、627、626、570、367、618、629、593、625、628、559、560、620、521、623、619、562、563、622、599、621、617、565、566、624、557、558、522、600、568、569、555
+                    if (item.CurrSite == 596 || item.CurrSite == 375 || item.CurrSite == 519 || item.CurrSite == 648 || item.CurrSite == 520 || item.CurrSite == 627 || item.CurrSite == 626 || item.CurrSite == 570 || item.CurrSite == 367 || item.CurrSite == 618 || item.CurrSite == 629 || item.CurrSite == 593 || item.CurrSite == 625 || item.CurrSite == 628 || item.CurrSite == 559 || item.CurrSite == 560 || item.CurrSite == 620 || item.CurrSite == 521 || item.CurrSite == 623 || item.CurrSite == 619 || item.CurrSite == 562 || item.CurrSite == 563 || item.CurrSite == 622 || item.CurrSite == 599 || item.CurrSite == 621 || item.CurrSite == 617 || item.CurrSite == 565 || item.CurrSite == 566 || item.CurrSite == 624 || item.CurrSite == 557 || item.CurrSite == 558 || item.CurrSite == 522 || item.CurrSite == 600 || item.CurrSite == 568 || item.CurrSite == 569 || item.CurrSite == 555) {
+                        PDlibrary.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //1F电梯里周围502、590、503、597、576、577、594、578
+                    if (item.CurrSite == 502 || item.CurrSite == 590 || item.CurrSite == 503 || item.CurrSite == 597 || item.CurrSite == 576 || item.CurrSite == 577 || item.CurrSite == 594 || item.CurrSite == 578) {
+                        elevatorregion.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //1F电梯里1000
+                    if (item.CurrSite == 1000) {
+                        elevator1F.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //101线中709、602、710、525、517
+                    if (item.CurrSite == 709 || item.CurrSite == 602 || item.CurrSite == 710 || item.CurrSite == 525 || item.CurrSite == 517) {
+                        middle101.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+
+                    //消防控制室	402、589、588、587、586、585、584
+                    if (item.CurrSite == 402 || item.CurrSite == 589 || item.CurrSite == 588 || item.CurrSite == 587 || item.CurrSite == 586 || item.CurrSite == 585 || item.CurrSite == 584) {
+                        fire.innerHTML = item.AgvID + '<img style="width: 20px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //1f看板528、704、635、714
+                    if (item.CurrSite == 528 || item.CurrSite == 704 || item.CurrSite == 635 || item.CurrSite == 714) {
+                        L1011.innerHTML = item.AgvID + '<img style="width: 20px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //101待命点：373、410、377、556、411、552、554、412、399、567、701、553、598
+                    if (item.CurrSite == 373 || item.CurrSite == 410 || item.CurrSite == 377 || item.CurrSite == 556 || item.CurrSite == 411 || item.CurrSite == 552 || item.CurrSite == 554 || item.CurrSite == 412 || item.CurrSite == 399 || item.CurrSite == 567 || item.CurrSite == 701 || item.CurrSite == 553 || item.CurrSite == 598) {
+                        L101.innerHTML = item.AgvID + '<img style="width: 20px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //L102线头：603、604、516、515
+                    if (item.CurrSite == 603 || item.CurrSite == 604 || item.CurrSite == 516 || item.CurrSite == 515) {
+                        L102.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //L103线头：605、606、514、513
+                    if (item.CurrSite == 605 || item.CurrSite == 606 || item.CurrSite == 514 || item.CurrSite == 513) {
+                        L103.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //104线头：607、608、512、511
+                    if (item.CurrSite == 607 || item.CurrSite == 608 || item.CurrSite == 512 || item.CurrSite == 511) {
+                        L104.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //L105线头：609、610、510、509
+                    if (item.CurrSite == 609 || item.CurrSite == 610 || item.CurrSite == 510 || item.CurrSite == 509) {
+                        L105.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //L106线头：611、612、507、506
+                    if (item.CurrSite == 611 || item.CurrSite == 612 || item.CurrSite == 507 || item.CurrSite == 506) {
+                        L106.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //L107线头：613、614、504、595、505
+                    if (item.CurrSite == 613 || item.CurrSite == 614 || item.CurrSite == 504 || item.CurrSite == 505 || item.CurrSite == 595) {
+                        L107.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //L108线头：615、616
+                    if (item.CurrSite == 616 || item.CurrSite == 615) {
+                        L108.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //L1021线尾：550、551、572
+                    if (item.CurrSite == 550 || item.CurrSite == 551 || item.CurrSite == 572) {
+                        L1021.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //L1031线尾：571、637
+                    if (item.CurrSite == 517 || item.CurrSite == 637) {
+                        L1031.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //1041线尾：713、638
+                    if (item.CurrSite == 713 || item.CurrSite == 638) {
+                        L1041.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //L1051线尾：712、639
+                    if (item.CurrSite == 639 || item.CurrSite == 712) {
+                        L1051.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //L1061线尾：640、711
+                    if (item.CurrSite == 640 || item.CurrSite == 711) {
+                        L1061.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //L1071线尾：641、574
+                    if (item.CurrSite == 641 || item.CurrSite == 574) {
+                        L1071.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //L1081线尾：642、573
+                    if (item.CurrSite == 642 || item.CurrSite == 573) {
+                        L1081.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //11#電梯533、535、536、537、538、539
+                    if (item.CurrSite == 533 || item.CurrSite == 535 || item.CurrSite == 536 || item.CurrSite == 537 || item.CurrSite == 538 || item.CurrSite == 539) {
+                        elevator11.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //1F茶水间579、580、581、582、583
+                    if (item.CurrSite == 579 || item.CurrSite == 580 || item.CurrSite == 581 || item.CurrSite == 582 || item.CurrSite == 583) {
+                        tea.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //10C：633、547、548、632
+                    if (item.CurrSite == 633 || item.CurrSite == 632 || item.CurrSite == 547 || item.CurrSite == 548) {
+                        C10.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //10A：544、532、631、545、546、630
+                    if (item.CurrSite == 544 || item.CurrSite == 532 || item.CurrSite == 631 || item.CurrSite == 545 || item.CurrSite == 546 || item.CurrSite == 630) {
+                        A10.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //109：702、703、645、646
+                    if (item.CurrSite == 645 || item.CurrSite == 646 || item.CurrSite == 702 || item.CurrSite == 703) {
+                        work109.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //看门狗：529、549、530、534、527、526、518、601,531
+                    if (item.CurrSite == 529 || item.CurrSite == 549 || item.CurrSite == 530 || item.CurrSite == 531 || item.CurrSite == 534 || item.CurrSite == 527 || item.CurrSite == 526 || item.CurrSite == 518 || item.CurrSite == 601) {
+                        secure1.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                    //vip：543、541、540
+                    if (item.CurrSite == 543 || item.CurrSite == 541 || item.CurrSite == 540) {
+                        work109.innerHTML = item.AgvID + '<img style="width: 40px;height: 100%" src="{% static 'img/car1.png' %}">';
+                    }
+                }
+            })
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 2000)
+</script>
+</html>

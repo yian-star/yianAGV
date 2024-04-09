@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       table {
+            width: 100%;
+            border-collapse: collapse;
+
+        }
+        td {
+            border: 1px solid black;
+            height: 30px;
+        }
+        .image-containertest {
+            display: flex;
+            justify-content: space-between; /* 图片之间均匀分布空间 */
+            align-items: center; /* 垂直居中 */
+            padding: 0; /* 确保没有内边距影响图片布局 */
+        }
+        .image-containertest img {
+            max-width: calc(50% - 10px); /* 假设图片之间的间隔为10px */
+            height: auto; /* 保持图片的原始宽高比 */
+        }
+    </style>
+</head>
+<body>
+<table id="myTable">
+    <tr>
+        <td id="cell1"></td>
+        <td id="cell2" class="image-containertest" style="width: 50%">
+            <img src="../static/img/line/回流线.PNG">
+            <img src="../static/img/line/回流线.PNG">
+            <img src="../static/img/line/回流线.PNG">
+
+        </td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+    </tr>
+</table>
+</body>
+</html>

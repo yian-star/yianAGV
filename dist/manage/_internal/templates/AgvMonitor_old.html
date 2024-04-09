@@ -1,0 +1,668 @@
+{% load static %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Agv Monitor</title>
+        {#        <link href="/static/css/bootstrap.css" rel="stylesheet">#}
+        <link href="{% static "/css/bootstrap.css" %}" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/base.css">
+        <link rel="stylesheet" href="/static/css/index.css">
+
+        <style>
+            .mydiv::-webkit-scrollbar {
+                width: 8px; /* 设置滚动条宽度 */
+            }
+
+            .mydiv::-webkit-scrollbar-track {
+                background-color: #ce2e2e; /* 设置滚动条背景色 */
+            }
+
+            .mydiv::-webkit-scrollbar-thumb {
+                background-color: #8ce17f; /* 设置滚动条滑块颜色 */
+            }
+
+            .mydiv::-webkit-scrollbar-thumb:hover {
+                background-color: #555; /* 设置滚动条滑块悬停时的颜色 */
+            }
+
+            .t_title {
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                font-size: 2.5em;
+                line-height: 80px;
+                color: #fff;
+            }
+
+            #chart_map {
+                cursor: pointer;
+            }
+
+            .t_show {
+                position: absolute;
+                top: 0;
+                right: 0;
+                border-radius: 2px;
+                background: #2C58A6;
+                padding: 2px 5px;
+                color: #fff;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+    {#    <div>#}
+    {#        <img src= {% url 'plot_graph' %}>是我的新啊</img>#}
+    {#    </div>#}
+
+    <!--header-->
+    <div class="header">
+        <div class="bg_header">
+            <div class="header_nav fl t_title">
+                AGV 监控大数据中心
+            </div>
+        </div>
+    </div>
+
+    <!--main-->
+    <div class="data_content">
+        <!-- <div class="data_time">
+            温馨提示: 点击模块后跳转至详情页面。
+        </div> -->
+
+        <div class="data_main">
+            <div class="main_left fl">
+                <div class="left_1 t_btn6" style="cursor: pointer;">
+                    <!--左上边框-->
+                    <div class="t_line_box">
+                        <i class="t_l_line"></i>
+                        <i class="l_t_line"></i>
+                    </div>
+                    <!--右上边框-->
+                    <div class="t_line_box">
+                        <i class="t_r_line"></i>
+                        <i class="r_t_line"></i>
+                    </div>
+                    <!--左下边框-->
+                    <div class="t_line_box">
+                        <i class="l_b_line"></i>
+                        <i class="b_l_line"></i>
+                    </div>
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                        <i class="r_b_line"></i>
+                        <i class="b_r_line"></i>
+                    </div>
+                    <div class="main_title">
+                        <img src="{% static "/img/t_1.png" %}" alt="">
+                        磁条 AGV
+                    </div>
+                    {#                图表#}
+                    {#                <div id="chart_1" class="chart" style="width:100%;height: 280px;"></div>#}
+                    <div id="" class="" style="width:100%;height: 280px;">
+                        <img style="width:70%;height: 80%;margin-top: 6%;margin-left: 5%"
+                             src="{% static "/img/car2.png" %}">
+                    </div>
+                </div>
+                <div class="left_2" style="cursor: pointer;">
+                    <div class="t_line_box">
+                        <i class="t_l_line"></i>
+                        <i class="l_t_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="t_r_line"></i>
+                        <i class="r_t_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="l_b_line"></i>
+                        <i class="b_l_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="r_b_line"></i>
+                        <i class="b_r_line"></i>
+                    </div>
+                    <div class="main_title">
+                        <img src="{% static "/img/t_2.png" %}" alt="">
+                        滚筒式 AGV
+                    </div>
+                    {#                这里是第二个显示AGV的地方#}
+                    <div id="chart_2" class="chart t_btn9" style="width:100%;height: 280px;">
+                        <img style="width:70%;height: 80%;margin-top: 6%;margin-left: 5%"
+                             src="{% static "/img/car1.png" %}">
+                    </div>
+                </div>
+            </div>
+            <div class="main_center fl">
+                <div class="center_text" style="position: relative;">
+                    <!--左上边框-->
+                    <div class="t_line_box">
+                        <i class="t_l_line"></i>
+                        <i class="l_t_line"></i>
+                    </div>
+                    <!--右上边框-->
+                    <div class="t_line_box">
+                        <i class="t_r_line"></i>
+                        <i class="r_t_line"></i>
+                    </div>
+                    <!--左下边框-->
+                    <div class="t_line_box">
+                        <i class="l_b_line"></i>
+                        <i class="b_l_line"></i>
+                    </div>
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                        <i class="r_b_line"></i>
+                        <i class="b_r_line"></i>
+                    </div>
+                    <div class="main_title" style="width: 230px;">
+                        <img src="{% static "/img/t_3.png" %}" alt="">
+                        AGV Roadmap
+                    </div>
+{#                    <div id="chart_map" style="width:100%;height:610px;"></div>#}
+                    <div class="" style="display: flex;align-items: center;justify-content: center;margin-top: 10%">
+{#                        <img  src= {% url 'plot_graph' %}>#}
+                        <img style="height: 500px;width: 700px"  src= {% static '/img/test.JPG' %}>
+{#                        <ul>#}
+{#                            <li><span></span>2015批(8个)</li>#}
+{#                            <li><span></span>2016批(15个)</li>#}
+{#                            <li><span></span>2017批(13个)</li>#}
+{#                            <li><span></span>2018批(11个)</li>#}
+{#                        </ul>#}
+                    </div>
+                </div>
+            </div>
+            <style type="text/css">
+                .linshi_zdy {
+                    position: absolute;
+                    right: 0px;
+                    top: 450px;
+                }
+
+                .linshi_zdy li {
+                    width: 150px;
+                    font-size: 16px;
+                    padding: 3px 8px;
+                    cursor: pointer;
+                }
+
+                .linshi_zdy span {
+                    display: block;
+                    width: 14px;
+                    height: 14px;
+                    float: left;
+                    border-radius: 50%;
+                    margin-top: 3px;
+                    margin-right: 5px;
+                }
+
+                .linshi_zdy li:first-child {
+                    color: #ff0000;
+                }
+
+                .linshi_zdy li:first-child span {
+                    background: #ff0000;
+                }
+
+                .linshi_zdy li:nth-child(2) {
+                    color: #9cff00;
+                }
+
+                .linshi_zdy li:nth-child(2) span {
+                    background: #9cff00;
+                }
+
+                .linshi_zdy li:nth-child(3) {
+                    color: #fff;
+                }
+
+                .linshi_zdy li:nth-child(3) span {
+                    background: #fff;
+                }
+
+                .linshi_zdy li:nth-child(4) {
+                    color: #f4a100;
+                }
+
+                .linshi_zdy li:nth-child(4) span {
+                    background: #f4a100;
+                }
+            </style>
+            <div class="main_right fr">
+                <div class="right_1">
+                    <!--左上边框-->
+                    <div class="t_line_box">
+                        <i class="t_l_line"></i>
+                        <i class="l_t_line"></i>
+                    </div>
+                    <!--右上边框-->
+                    <div class="t_line_box">
+                        <i class="t_r_line"></i>
+                        <i class="r_t_line"></i>
+                    </div>
+                    <!--左下边框-->
+                    <div class="t_line_box">
+                        <i class="l_b_line"></i>
+                        <i class="b_l_line"></i>
+                    </div>
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                        <i class="r_b_line"></i>
+                        <i class="b_r_line"></i>
+                    </div>
+                    <div class="main_title" style="width:220px;">
+                        <img src="{% static "/img/t_4.png" %}" alt="">
+                        顶升式 AGV
+                    </div>
+                    <div id="chart_3" class="echart t_btn7" style="width:100%;height: 280px;">
+                        <img style="width:70%;height: 80%;margin-top: 6%;margin-left: 5%"
+                             src="{% static "/img/car1.png" %}">
+                    </div>
+                </div>
+                <div class="right_2">
+                    <!--左上边框-->
+                    <div class="t_line_box">
+                        <i class="t_l_line"></i>
+                        <i class="l_t_line"></i>
+                    </div>
+                    <!--右上边框-->
+                    <div class="t_line_box">
+                        <i class="t_r_line"></i>
+                        <i class="r_t_line"></i>
+                    </div>
+                    <!--左下边框-->
+                    <div class="t_line_box">
+                        <i class="l_b_line"></i>
+                        <i class="b_l_line"></i>
+                    </div>
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                        <i class="r_b_line"></i>
+                        <i class="b_r_line"></i>
+                    </div>
+                    <div class="main_title" style="width:200px;">
+
+                        <img src="{% static "/img/t_5.png" %}" alt="">
+                        叉车式 AGV
+                    </div>
+                    <div id="chart_3" class="echart t_btn7" style="width:100%;height: 280px;">
+                        <img style="width:70%;height: 80%;margin-top: 6%;margin-left: 5%"
+                             src="{% static "/img/car3.png" %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="data_bottom">
+            <div class="bottom_1 fl t_btn5" style="cursor: pointer;">
+                <div class="t_line_box">
+                    <i class="t_l_line"></i>
+                    <i class="l_t_line"></i>
+                </div>
+                <div class="t_line_box">
+                    <i class="t_r_line"></i>
+                    <i class="r_t_line"></i>
+                </div>
+                <div class="t_line_box">
+                    <i class="l_b_line"></i>
+                    <i class="b_l_line"></i>
+                </div>
+                <div class="t_line_box">
+                    <i class="r_b_line"></i>
+                    <i class="b_r_line"></i>
+                </div>
+                <div class="main_title">
+                    <img src="{% static "/img/t_7.png" %}" alt="">
+                    磁条AGV数据详情
+                </div>
+                <div class="main_table t_btn8">
+                    <div>
+                        <img style="width:20%;height: 20%;margin-top: 6%;margin-left: 5%" src="{% static "/img/car1.png" %}">
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>功能</th>
+                            <th>状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1#</td>
+                            <td>运送PCB</td>
+                            <td style="color: #53ee53;font-size: 18px">在线</td>
+                        </tr>
+                        <tr>
+                            <td>2#</td>
+                            <td>运行PCB</td>
+                            <td style="color: #53ee53;font-size: 18px">在线</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="bottom_center fl">
+                <div class="bottom_2 fl">
+                    <div class="t_line_box">
+                        <i class="t_l_line"></i>
+                        <i class="l_t_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="t_r_line"></i>
+                        <i class="r_t_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="l_b_line"></i>
+                        <i class="b_l_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="r_b_line"></i>
+                        <i class="b_r_line"></i>
+                    </div>
+                    <div class="main_title" style="width:300px;left:40%;">
+                        <img src="{% static "/img/t_7.png" %}" alt="">
+                        滚筒AGV数据详情
+                    </div>
+                    <div class="main_table t_btn8 mydiv" style="height: 250px;overflow-y: scroll;">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>功能</th>
+                                <th>状态</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>3FPD</td>
+                                <td>三厂SMT-PD对接</td>
+                                <td style="color: #53ee53;font-size: 18px">在线</td>
+                            </tr>
+                            <tr>
+                                <td>3F01</td>
+                                <td>S1L1运送载具</td>
+                                <td>休眠</td>
+                            </tr>
+                            <tr>
+                                <td>301X</td>
+                                <td>PD302运送载具</td>
+                                <td style="color: rgb(250,233,118);font-size: 18px">在施工</td>
+                            </tr>
+                            <tr>
+                                <td>5F02</td>
+                                <td>C1运送载具</td>
+                                <td style="color: #53ee53;font-size: 18px">在线</td>
+                            </tr>
+                            <tr>
+                                <td>5F03</td>
+                                <td>C1运送载具</td>
+                                <td style="color: #53ee53;font-size: 18px">在线</td>
+                            </tr>
+                            <tr>
+                                <td>5F04</td>
+                                <td>C1运送载具</td>
+                                <td style="color: #53ee53;font-size: 18px">在线</td>
+                            </tr>
+                            <tr>
+                                <td>5F05</td>
+                                <td>C1运送载具</td>
+                                <td style="color: #c4bdbd;font-size: 18px">未施工</td>
+                            </tr>
+                            <tr>
+                                <td>4F01</td>
+                                <td>Controller运送载具</td>
+                                <td style="color: #c4bdbd;font-size: 18px">未施工</td>
+                            </tr>
+                            <tr>
+                                <td>4F02</td>
+                                <td>Controller运送</td>
+                                <td style="color: #c4bdbd;font-size: 18px">未施工</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="bottom_3 fl">
+                    <div class="t_line_box">
+                        <i class="t_l_line"></i>
+                        <i class="l_t_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="t_r_line"></i>
+                        <i class="r_t_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="l_b_line"></i>
+                        <i class="b_l_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="r_b_line"></i>
+                        <i class="b_r_line"></i>
+                    </div>
+                    <div class="main_title" style="width:260px;left:45%;">
+                        <img src="{% static "/img/t_7.png" %}" alt="">
+                        顶升式AGV数据详情
+                    </div>
+                    <div class="main_table t_btn2">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>功能</th>
+                                <th>状态</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>3#</td>
+                                <td>运送半成品PCBA</td>
+                                <td style="color: #53ee53;font-size: 18px">在线</td>
+                            </tr>
+                            <tr>
+                                <td>4#</td>
+                                <td>运送半成品PCBA</td>
+                                <td style="color: #53ee53;font-size: 18px">在线</td>
+                            </tr>
+                            <tr>
+                                <td>5#</td>
+                                <td>运送半成品PCBA</td>
+                                <td style="color: #ea3342;font-size: 18px">故障</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom_4 fr">
+                <div class="t_line_box">
+                    <i class="t_l_line"></i>
+                    <i class="l_t_line"></i>
+                </div>
+                <div class="t_line_box">
+                    <i class="t_r_line"></i>
+                    <i class="r_t_line"></i>
+                </div>
+                <div class="t_line_box">
+                    <i class="l_b_line"></i>
+                    <i class="b_l_line"></i>
+                </div>
+                <div class="t_line_box">
+                    <i class="r_b_line"></i>
+                    <i class="b_r_line"></i>
+                </div>
+                <div class="main_title">
+                    <img src="{% static "/img/t_7.png" %}" alt="">
+                    叉车式AGV数据详情
+                </div>
+                <div class="main_table t_btn3 table_zdy">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>功能</th>
+                            <th>状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>5F05</td>
+                            <td>运送栈板</td>
+                            <td style="color: #c4bdbd;font-size: 18px">未施工</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    <script src="/static/js/jquery-2.2.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script src="/static/js/datatool.js"></script>
+    <script src="/static/js/index.js"></script>
+    <script src="/static/js/guangxi.js"></script>
+    <script type="text/javascript">
+        var dianshang = [];
+
+        function get_shuju() {
+            $.ajax({
+                type: "post",
+                async: false,
+                url: "/record/dianshang",
+                data: {},
+                dataType: "json",
+                success: function (res) {
+                    // console.log(res);
+                    // if (res) {
+                    // for (var i = 0; i < res.length; i++) {
+                    dianshang.push(res);
+                    // };
+                    // };
+                }
+            })
+            return dianshang;
+        }
+
+        //电商企业入驻情况
+        dianshang = get_shuju();
+
+        var changedetail = echarts.init(document.getElementById('chart_4'));
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                // formatter: '{b}</br>{a}: {c}</br>{a1}: {c1}'
+            },
+            toolbox: {
+                show: false,
+                feature: {
+                    dataView: {show: true, readOnly: false},
+                    magicType: {show: true, type: ['line', 'bar']},
+                    restore: {show: true},
+                    saveAsImage: {show: true}
+                }
+            },
+            legend: {
+                data: ['', ''],
+                show: false
+            },
+            grid: {
+                top: '18%',
+                right: '5%',
+                bottom: '8%',
+                left: '5%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['名优企业', '技术服务', '技术开发', '电子商务', '网络推广', '涉互联网企业'],
+                    splitLine: {
+                        show: false,
+                        lineStyle: {
+                            color: '#3c4452'
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: "#fff"
+                        },
+                        lineStyle: {
+                            color: '#519cff'
+                        },
+                        alignWithLabel: true,
+                        interval: 0
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '入驻数据',
+                    nameTextStyle: {
+                        color: '#fff'
+                    },
+                    interval: 100000,
+                    min: 0,
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#23303f'
+                        }
+                    },
+                    axisLine: {
+                        show: false,
+                        lineStyle: {
+                            color: '#115372'
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: "#fff"
+                        },
+                        alignWithLabel: true,
+                        interval: 0
+
+                    }
+                }
+            ],
+            color: "yellow",
+            series: [
+                {
+                    name: '电商企业入驻',
+                    type: 'bar',
+                    data: [dianshang[0][0], dianshang[0][1], dianshang[0][2], dianshang[0][3], dianshang[0][4], dianshang[0][5]],
+                    boundaryGap: '45%',
+                    barWidth: '40%',
+
+                    itemStyle: {
+                        normal: {
+                            color: function (params) {
+                                var colorList = [
+                                    '#6bc0fb', '#7fec9d', '#fedd8b', '#ffa597', '#84e4dd', '#6bc0fb'
+                                ];
+                                return colorList[params.dataIndex]
+                            }, label: {
+                                show: true,
+                                position: 'top',
+                                formatter: '{c}'
+                            }
+                        }
+                    }
+                }
+            ]
+        };
+        changedetail.setOption(option);
+    </script>
+    </html>
+{% endblock %}

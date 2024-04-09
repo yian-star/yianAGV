@@ -1,0 +1,754 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1F jacking AGV</title>
+    <style>
+        .table1F {
+            color: white;
+            width: 98%;
+            height: 98%;
+            border-spacing: 0 0;
+            border-collapse: separate;
+            text-align: center;
+            margin-left: 1%;
+            margin-right: 1%;
+            margin-bottom: 1%;
+        }
+
+        .table1F td {
+            height: 30px;
+            border: 1px solid #a5a69f;
+        }
+
+        .oneF {
+            text-align: right;
+            background-color: #e3e3e2;;
+            border-bottom: 8px solid #003060;
+            background-image: url("{% static 'img/line.png' %}");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .Fwork {
+            text-align: right;
+            background-color: #e3e3e2;;
+            border-bottom: 8px solid #003060;
+            background-image: url("{% static 'img/line.png' %}");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .Froad {
+            {#width: 1%;#}
+            {#width: 20px;#}
+        }
+
+        span {
+            background-color: #79aec8;
+            font-size: 10px;
+        }
+
+        .image-container1F {
+            padding-right: 0;
+            text-align: right;
+            height: 30px; /* 固定高度，如果需要的话 */
+            overflow: hidden; /* 隐藏超出td的内容 */
+        {#display: flex; /* 使用flex布局使图片居中 */#}
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            white-space: nowrap; /* 防止图片换行 */
+        }
+
+        .image-container1F img {
+            max-width: 100%; /* 图片最大宽度为td的宽度 */
+            height: 100%; /* 保持图片的原始宽高比 */
+            /* 设置图片之间的间隔 */
+            margin-right: 8px; /* 根据需要调整 */
+        }
+
+        .image-container1F span {
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div style="width: 100%;height: 100%">
+    <table class="table1F">
+        <tr>
+            <td style="width: 3%;"></td>
+            <td style="width: 3%"></td>
+            <td style="width: 4%"></td>
+            <td style="width: 10%"></td>
+            <td style="width: 10%"></td>
+            <td style="width: 10%"></td>
+            <td style="width: 10%"></td>
+            <td style="width: 4%"></td>
+            <td style="width: 10%"></td>
+            <td style="width: 10%"></td>
+            <td style="width: 20%"></td>
+            <td style=""></td>
+        </tr>
+        <tr>
+            <td ></td>
+            <td></td>
+            <td ></td>
+            <td class="image-container1F">
+                <img src="{% static 'img/tea.png' %}" style="height: 100%;margin-left: 1%;">
+            </td>
+            <td></td>
+            <td></td>
+            <td style="font-size: 12px">消防控制室</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad"></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="tea"></td>
+            <td class="Froad"></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="fire"></td>
+            <td class="Froad"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad" id="L108"></td>
+            <td class="Froad"></td>
+            <td></td>
+            <td colspan="3" class="image-container1F" style="text-align: right">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <span>108</span>
+            </td>
+            <td class="Froad" id="L1081"></td>
+            <td></td>
+            <td class="Fwork" colspan="2">
+                <span>Ver tex</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-image: url('{% static 'img/elevator.png' %}');background-size: cover;background-repeat: no-repeat"
+                id="elevator1F"></td>
+            <td class="Froad" id="elevatorregion"></td>
+            <td class="Froad" id="L107"></td>
+            <td class="image-container1F" colspan="4" >
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <span>107</span>
+            </td>
+            <td class="Froad" id="L1071"></td>
+            <td></td>
+            <td class="Fwork" colspan="2">
+                <span>Jalama ENH</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad" rowspan="2"></td>
+            <td class="Froad" id="L106" rowspan="2"></td>
+            <td class="image-container1F" colspan="4" rowspan="2">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <span>106</span>
+            </td>
+            <td class="Froad" id="L1061" rowspan="2"></td>
+            <td class="Froad" id="CTS"></td>
+            <td class="Fwork" colspan="2">
+                <span>Calgary</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td></td>
+            <td class="Fwork" colspan="2">
+                <span>Chariot-TB</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="L105"></td>
+            <td class="image-container1F" colspan="4">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <span>105</span>
+            </td>
+            <td class="Froad" id="L1051"></td>
+            <td></td>
+            <td class="Fwork" colspan="2">
+                <span>GAC</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad"></td>
+            <td class="Froad" ID="l104"></td>
+            <td class="image-container1F" colspan="4">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <span>104</span>
+            </td>
+            <td class="Froad" id="L1041"></td>
+            <td rowspan="2" style="border-bottom: 0;background-color: rgba(225,224,186,0.88)">库房</td>
+            <td class="Fwork" colspan="2">
+                <span>PDR1</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="L103"></td>
+            <td class="image-container1F" colspan="4">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <span>103</span>
+            </td>
+            <td class="Froad" id="L1031"></td>
+            <td class="Fwork" style="border-bottom: 0" colspan="2">
+                <span>PDR2</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="L102"></td>
+            <td class="image-container1F" colspan="4">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <span>102</span>
+            </td>
+            <td class="Froad" id="L1021"></td>
+            <td></td>
+            <td class="Fwork" style="border-top:8px solid #003060" colspan="2">
+                <span>PDR3</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #e3beaf" rowspan="3">AGV待命点</td>
+            <td class="Froad" id="car3"></td>
+            <td class="Froad" id="L101" rowspan="3"></td>
+            <td rowspan="3" style="border-bottom: 0;background-color: rgba(225,224,186,0.88)" id="PDlibrary">PD库房</td>
+            <td></td>
+            <td rowspan="3" id="middle101"></td>
+            <td>
+
+            </td>
+            <td class="Froad" id="L1011" rowspan="3"></td>
+            <td class="Fwork" colspan="3"><span>办公 机柜</span></td>
+            <td class="Froad" id="work109"></td>
+        </tr>
+        <tr>
+
+            <td class="Froad" id="car4"></td>
+            <td class="oneF"></td>
+            <td class="oneF"><span>101</span></td>
+            <td class="Fwork" colspan="3">
+                <span>10C</span>
+            </td>
+
+            <td class="Froad" id="C10"></td>
+
+        </tr>
+        <tr>
+            <td class="Froad" id="car5"></td>
+            <td></td>
+            <td></td>
+            <td class="Fwork" colspan="3" style="border-bottom: 0">
+                <span>10A</span>
+            </td>
+            <td class="Froad" id="A10"></td>
+        </tr>
+        <tr>
+            <td ></td>
+            <td class="Froad"></td>
+            <td class="Froad"></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="wharf"></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="product"></td>
+            <td class="Froad"></td>
+            <td class="Froad" id="secure1"></td>
+            <td class="Froad" id="elevator11"></td>
+            <td class="Froad" id="VIP"></td>
+            <td class="Froad"></td>
+        </tr>
+        <tr>
+            <td style="height: 44px"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="background-color: #79aec8">码头</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="writing-mode: vertical-rl" class="image-container1F">
+                <img style="transform: rotate(90deg)" src="{% static 'img/Access.JPG' %}">
+                <p style="background-color: #00bb00;font-size: 9px">员工出入口</p>
+            </td>
+            <td  class="image-container1F" style="height: 44px">
+                <img src="{% static 'img/elevator.png' %}">
+            </td>
+            <td style="writing-mode: vertical-rl;font-size: 12px">VIP通道</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+<script>
+    setInterval(function () {
+        fetch('/agv_route')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {//处理返回的数据
+                let data1F = [373, 410, 556, 411, 554, 412, 701, 553, 399, 552, 377, 567, 598, 603, 604, 516, 515, 605, 606, 514, 513, 607, 608, 512, 511, 609, 610, 510, 509, 611, 612, 507, 506, 613, 614, 504, 595, 505, 615, 616, 528, 704, 635, 714, 550, 551, 572, 571, 637, 713, 638, 712, 639, 640, 711, 641, 574, 642, 642, 573, 533, 535, 536, 537, 538, 539, 579, 580, 581, 582, 583, 633, 547, 548, 632, 544, 532, 631, 545, 546, 630, 702, 703, 645, 646, 529, 549, 530, 531, 534, 527, 526, 518, 601, 543, 541, 540, 402, 589, 588, 587, 586, 585, 584, 709, 517, 602, 710, 525, 1000, 596, 375, 519, 648, 520, 627, 626, 570, 367, 618, 629, 593, 625, 628, 559, 560, 620, 521, 623, 619, 562, 563, 622, 599, 621, 617, 565, 566, 624, 557, 558, 522, 600, 568, 569, 555, 502, 590, 503, 597, 576, 577, 594, 578, 647, 634, 561, 523, 404, 715, 524, 710, 525, 518, 601, 526, 527, 706, 707, 708, 636]
+                let obj = {
+                    'car3': [373, 410],
+                    'car4': [556, 411],
+                    'car5': [554, 412],
+                    'L101': [701, 553, 399, 552, 377, 567, 598],
+                    'L102': [603, 604, 516, 515],
+                    'L103': [605, 606, 514, 513],
+                    'L104': [607, 608, 512, 511],
+                    'L105': [609, 610, 510, 509],
+                    'L106': [611, 612, 507, 506],
+                    'L107': [613, 614, 504, 595, 505],
+                    'L108': [615, 616],
+                    'L1011': [528, 704, 635, 714],
+                    'L1021': [550, 551, 572],
+                    'L1031': [571, 637],
+                    'L1041': [713, 638],
+                    'L1051': [712, 639],
+                    'L1061': [640, 711],
+                    'L1071': [641, 574],
+                    'L1081': [642, 642, 573],
+                    'elevator11': [533, 535, 536, 537, 538, 539],
+                    'tea': [579, 580, 581, 582, 583],
+                    'C10': [633, 547, 548, 632],
+                    'A10': [544, 532, 631, 545, 546, 630],
+                    'work109': [702, 703, 645, 646],
+                    'secure1': [529, 549, 530, 531, 534, 527, 526, 518, 601],
+                    'VIP': [543, 541, 540],
+                    'fire': [402, 589, 588, 587, 586, 585, 584],
+                    'middle101': [709, 517, 602, 710, 525],
+                    'elevator1F': [1000],
+                    'PDlibrary': [596, 375, 519, 648, 520, 627, 626, 570, 367, 618, 629, 593, 625, 628, 559, 560, 620, 521, 623, 619, 562, 563, 622, 599, 621, 617, 565, 566, 624, 557, 558, 522, 600, 568, 569, 555],
+                    'elevatorregion': [502, 590, 503, 597, 576, 577, 594, 578],
+                    'product': [647, 634],
+                    'wharf': [561, 523, 404, 715, 524, 710, 525, 518, 601, 526, 527],
+                    'CTS': [706, 707, 708, 636]
+                };
+                for (let item of data['data']) {
+                    //当车子的点位在1楼的时候
+                    if (data1F.includes(Number(item.CurrSite))) {
+                        {#console.log("车子到达1楼了？", item.AgvID);#}
+                        if (Number(item.AgvID) == 3) {
+                            {#console.log("3号车当前位置？", item.CurrSite);#}
+                            //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                            var img3 = document.getElementById("move3"); // 获取图片元素
+                            //现在需要获取点位的目标位置呀，我的宝
+                            var duration = 2000; // 移动的持续时间，单位为毫秒
+                            var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                            var currentStep = 0; // 当前步数，用于控制动画效果
+                            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                            if (img3) {
+                                var startX = document.getElementById("move3").offsetLeft; // 起始位置的左边距
+                                var startY = document.getElementById("move3").offsetTop; // 起始位置的上边距
+                                {#console.log('3号车开始X位置', startX);#}
+                                {#console.log('3号车开始Y位置', startY);#}
+                                //要获取目标位置了，要遍历整个
+                                let keyWithValue = '';
+                                for (let key in obj) {
+                                    if (obj[key].includes(Number(item.CurrSite))) {
+                                        keyWithValue = key;
+
+                                        function getOffsetRelativeTo(element, container) {
+                                            var offsetX = 0;
+                                            var offsetY = 0;
+                                            while (element && element !== container) {
+                                                offsetX += element.offsetLeft;
+                                                offsetY += element.offsetTop;
+                                                element = element.offsetParent;
+                                            }
+                                            return {offsetX: offsetX, offsetY: offsetY};
+                                        }
+
+                                        var move3Element = document.getElementById(keyWithValue);
+                                        var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+
+                                        var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                        var endX3 = offset.offsetX;
+                                        var endY3 = offset.offsetY;
+                                        endX3 = endX3 - 40;
+                                        endY3 = endY3 - 120;
+                                        {#console.log('3号车结束X位置', endX3);#}
+                                        {#console.log('3号车结束Y位置', endY3);#}
+                                        var moveImage = function () {
+                                            if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                            if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                img3.style.left = (startX + currentStep * (endX3 - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                img3.style.top = (startY + currentStep * (endY3 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                currentStep++; // 增加步数
+                                            } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                img3.style.left = endX3 + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                img3.style.top = endY3 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                clearInterval(intervalId); // 停止动画效果
+                                                {#console.log("3号车移动结束？");#}
+                                            }
+                                        };
+                                        intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                        break;
+                                    }
+                                }
+                            } else {
+                                {#console.log("1F位置", item.CurrSite);#}
+                                let site = Number(item.CurrSite);
+                                const keyForValue336 = Object.entries(obj).find(([key, value]) => value.includes(site))?.[0];
+                                {#console.log("开始找位置啦", keyForValue336);#}
+                                let car30 = document.getElementById(keyForValue336);
+                                //这里有很大的问题呢
+                                car30.innerHTML = '<div id="move3" style="position: absolute">3<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+                            }
+                        }
+                    }
+                }
+            })
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 5000)
+    setInterval(function () {
+        fetch('/agv_route')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {//处理返回的数据
+                let data1F = [373, 410, 556, 411, 554, 412, 701, 553, 399, 552, 377, 567, 598, 603, 604, 516, 515, 605, 606, 514, 513, 607, 608, 512, 511, 609, 610, 510, 509, 611, 612, 507, 506, 613, 614, 504, 595, 505, 615, 616, 528, 704, 635, 714, 550, 551, 572, 571, 637, 713, 638, 712, 639, 640, 711, 641, 574, 642, 642, 573, 533, 535, 536, 537, 538, 539, 579, 580, 581, 582, 583, 633, 547, 548, 632, 544, 532, 631, 545, 546, 630, 702, 703, 645, 646, 529, 549, 530, 531, 534, 527, 526, 518, 601, 543, 541, 540, 402, 589, 588, 587, 586, 585, 584, 709, 517, 602, 710, 525, 1000, 596, 375, 519, 648, 520, 627, 626, 570, 367, 618, 629, 593, 625, 628, 559, 560, 620, 521, 623, 619, 562, 563, 622, 599, 621, 617, 565, 566, 624, 557, 558, 522, 600, 568, 569, 555, 502, 590, 503, 597, 576, 577, 594, 578, 647, 634, 561, 523, 404, 715, 524, 710, 525, 518, 601, 526, 527, 706, 707, 708, 636]
+                let obj = {
+                    'car3': [373, 410],
+                    'car4': [556, 411],
+                    'car5': [554, 412],
+                    'L101': [701, 553, 399, 552, 377, 567, 598],
+                    'L102': [603, 604, 516, 515],
+                    'L103': [605, 606, 514, 513],
+                    'L104': [607, 608, 512, 511],
+                    'L105': [609, 610, 510, 509],
+                    'L106': [611, 612, 507, 506],
+                    'L107': [613, 614, 504, 595, 505],
+                    'L108': [615, 616],
+                    'L1011': [528, 704, 635, 714],
+                    'L1021': [550, 551, 572],
+                    'L1031': [571, 637],
+                    'L1041': [713, 638],
+                    'L1051': [712, 639],
+                    'L1061': [640, 711],
+                    'L1071': [641, 574],
+                    'L1081': [642, 642, 573],
+                    'elevator11': [533, 535, 536, 537, 538, 539],
+                    'tea': [579, 580, 581, 582, 583],
+                    'C10': [633, 547, 548, 632],
+                    'A10': [544, 532, 631, 545, 546, 630],
+                    'work109': [702, 703, 645, 646],
+                    'secure1': [529, 549, 530, 531, 534, 527, 526, 518, 601],
+                    'VIP': [543, 541, 540],
+                    'fire': [402, 589, 588, 587, 586, 585, 584],
+                    'middle101': [709, 517, 602, 710, 525],
+                    'elevator1F': [1000],
+                    'PDlibrary': [596, 375, 519, 648, 520, 627, 626, 570, 367, 618, 629, 593, 625, 628, 559, 560, 620, 521, 623, 619, 562, 563, 622, 599, 621, 617, 565, 566, 624, 557, 558, 522, 600, 568, 569, 555],
+                    'elevatorregion': [502, 590, 503, 597, 576, 577, 594, 578],
+                    'product': [647, 634],
+                    'wharf': [561, 523, 404, 715, 524, 710, 525, 518, 601, 526, 527],
+                    'CTS': [706, 707, 708, 636]
+                };
+                for (let item of data['data']) {
+                    //当车子的点位在1楼的时候
+                    if (data1F.includes(Number(item.CurrSite))) {
+                        {#console.log("车子到达1楼了？", item.AgvID);#}
+                        if (Number(item.AgvID) == 4) {
+                            var img4 = document.getElementById("move4"); // 获取图片元素,动态分配的那个
+                            var duration = 2000; // 移动的持续时间，单位为毫秒
+                            var steps = duration / 10; // 每秒的步数，根据持续时间计算步数
+                            var currentStep = 0; // 当前步数，用于控制动画效果
+                            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                            let keyWithValue = '';
+                            if (img4) {
+                                var startX = document.getElementById("move4").offsetLeft; // 起始位置的左边距
+                                var startY = document.getElementById("move4").offsetTop; // 起始位置的上边距
+                                //现在是找到了开始的点
+                                for (let key in obj) {
+                                    if (obj[key].includes(Number(item.CurrSite))) {
+                                        keyWithValue = key;
+
+                                        function getOffsetRelativeTo(element, container) {
+                                            var offsetX = 0;
+                                            var offsetY = 0;
+                                            while (element && element !== container) {
+                                                offsetX += element.offsetLeft;
+                                                offsetY += element.offsetTop;
+                                                element = element.offsetParent;
+                                            }
+                                            return {offsetX: offsetX, offsetY: offsetY};
+                                        }
+
+                                        var move3Element = document.getElementById(keyWithValue);
+                                        var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+                                        var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                        var endX = offset.offsetX;
+                                        var endY4 = offset.offsetY;
+                                        endX = endX - 40;
+                                        endY4 = endY4 - 120;
+                                        {#console.log("4号车当前位置？", endY4);#}
+                                        var moveImage = function () {
+                                            if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                            //alert(startTime);
+                                            if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                img4.style.left = (startX + currentStep * (endX - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                img4.style.top = (startY + currentStep * (endY4 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                currentStep++; // 增加步数
+                                            } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                img4.style.left = endX + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                img4.style.top = endY4 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                //console.log("天啦天啦天啦？", endY4);
+                                                clearInterval(intervalId); // 停止动画效果
+                                            }
+                                        };
+                                        intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                        break;
+                                    }
+                                }
+                            } else {
+                                {#console.log("1F位置", item.CurrSite);#}
+                                let site = Number(item.CurrSite);
+                                const keyForValue336 = Object.entries(obj).find(([key, value]) => value.includes(site))?.[0];
+                                {#console.log("开始找位置啦", keyForValue336);#}
+                                let car40 = document.getElementById(keyForValue336);
+                                //这里有很大的问题呢
+                                car40.innerHTML = '<div id="move4" style="position: absolute">4<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+
+                                {#car4.innerHTML = '<div id="move4" style="position: absolute">4<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car1.png' %}"></div>';#}
+                            }
+                        }
+                    }
+                }
+            })
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 5000)
+    setInterval(function () {
+        fetch('/agv_route')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {//处理返回的数据
+                let data1F = [373, 410, 556, 411, 554, 412, 701, 553, 399, 552, 377, 567, 598, 603, 604, 516, 515, 605, 606, 514, 513, 607, 608, 512, 511, 609, 610, 510, 509, 611, 612, 507, 506, 613, 614, 504, 595, 505, 615, 616, 528, 704, 635, 714, 550, 551, 572, 571, 637, 713, 638, 712, 639, 640, 711, 641, 574, 642, 642, 573, 533, 535, 536, 537, 538, 539, 579, 580, 581, 582, 583, 633, 547, 548, 632, 544, 532, 631, 545, 546, 630, 702, 703, 645, 646, 529, 549, 530, 531, 534, 527, 526, 518, 601, 543, 541, 540, 402, 589, 588, 587, 586, 585, 584, 709, 517, 602, 710, 525, 1000, 596, 375, 519, 648, 520, 627, 626, 570, 367, 618, 629, 593, 625, 628, 559, 560, 620, 521, 623, 619, 562, 563, 622, 599, 621, 617, 565, 566, 624, 557, 558, 522, 600, 568, 569, 555, 502, 590, 503, 597, 576, 577, 594, 578, 647, 634, 561, 523, 404, 715, 524, 710, 525, 518, 601, 526, 527, 706, 707, 708, 636]
+                let obj = {
+                    'car3': [373, 410],
+                    'car4': [556, 411],
+                    'car5': [554, 412],
+                    'L101': [701, 553, 399, 552, 377, 567, 598],
+                    'L102': [603, 604, 516, 515],
+                    'L103': [605, 606, 514, 513],
+                    'L104': [607, 608, 512, 511],
+                    'L105': [609, 610, 510, 509],
+                    'L106': [611, 612, 507, 506],
+                    'L107': [613, 614, 504, 595, 505],
+                    'L108': [615, 616],
+                    'L1011': [528, 704, 635, 714],
+                    'L1021': [550, 551, 572],
+                    'L1031': [571, 637],
+                    'L1041': [713, 638],
+                    'L1051': [712, 639],
+                    'L1061': [640, 711],
+                    'L1071': [641, 574],
+                    'L1081': [642, 642, 573],
+                    'elevator11': [533, 535, 536, 537, 538, 539],
+                    'tea': [579, 580, 581, 582, 583],
+                    'C10': [633, 547, 548, 632],
+                    'A10': [544, 532, 631, 545, 546, 630],
+                    'work109': [702, 703, 645, 646],
+                    'secure1': [529, 549, 530, 531, 534, 527, 526, 518, 601],
+                    'VIP': [543, 541, 540],
+                    'fire': [402, 589, 588, 587, 586, 585, 584],
+                    'middle101': [709, 517, 602, 710, 525],
+                    'elevator1F': [1000],
+                    'PDlibrary': [596, 375, 519, 648, 520, 627, 626, 570, 367, 618, 629, 593, 625, 628, 559, 560, 620, 521, 623, 619, 562, 563, 622, 599, 621, 617, 565, 566, 624, 557, 558, 522, 600, 568, 569, 555],
+                    'elevatorregion': [502, 590, 503, 597, 576, 577, 594, 578],
+                    'product': [647, 634],
+                    'wharf': [561, 523, 404, 715, 524, 710, 525, 518, 601, 526, 527],
+                    'CTS': [706, 707, 708, 636]
+                };
+                for (let item of data['data']) {
+                    //当车子的点位在1楼的时候
+                    if (data1F.includes(Number(item.CurrSite))) {
+                        {#console.log("车子到达1楼了？", item.AgvID);#}
+                        if (Number(item.AgvID) == 5) {
+                            //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                            //现在需要获取点位的目标位置呀，我的宝
+                            var img5 = document.getElementById("move5"); // 获取图片元素
+                            var duration = 2000; // 移动的持续时间，单位为毫秒
+                            var steps = duration / 10; // 每秒的步数，根据持续时间计算步数
+                            var currentStep = 0; // 当前步数，用于控制动画效果
+                            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                            let keyWithValue = '';
+                            if (img5) {
+                                //车子的起始位置要找到哎
+                                var startX = document.getElementById("move5").offsetLeft; // 起始位置的左边距
+                                var startY = document.getElementById("move5").offsetTop; // 起始位置的上边距
+                                for (let key in obj) {
+                                    if (obj[key].includes(Number(item.CurrSite))) {
+                                        keyWithValue = key;
+
+                                        function getOffsetRelativeTo(element, container) {
+                                            var offsetX = 0;
+                                            var offsetY = 0;
+                                            while (element && element !== container) {
+                                                offsetX += element.offsetLeft;
+                                                offsetY += element.offsetTop;
+                                                element = element.offsetParent;
+                                            }
+                                            return {offsetX: offsetX, offsetY: offsetY};
+                                        }
+
+                                        var move3Element = document.getElementById(keyWithValue);
+                                        var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+
+                                        var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                        var endX = offset.offsetX;
+                                        var endY = offset.offsetY;
+                                        endX = endX - 40;
+                                        endY = endY - 120;
+
+                                        {#var endX = document.getElementById(keyWithValue).offsetLeft; // 目标位置的左边距#}
+                                        {#var endY = document.getElementById(keyWithValue).offsetTop; // 目标位置的上边距#}
+                                        {#endX = endX + 30;#}
+                                        {#endY = endY + 50;#}
+                                        {#console.log("5号车结束y位置：", endY);#}
+                                        var moveImage = function () {
+                                            if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                            //alert(startTime);
+                                            if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                img5.style.left = (startX + currentStep * (endX - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                img5.style.top = (startY + currentStep * (endY - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                currentStep++; // 增加步数
+                                            } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                img5.style.left = endX + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                img5.style.top = endY + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                clearInterval(intervalId); // 停止动画效果
+                                                {#console.log("5号车移动结束？");#}
+                                            }
+                                        };
+                                        intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                        break;
+                                    }
+                                }
+                            } else {
+                                //在页面上没有找到车子，现在要把车子直接显示在页面上
+                                console.log("1F位置", item.CurrSite);
+                                let site = Number(item.CurrSite);
+                                const keyForValue336 = Object.entries(obj).find(([key, value]) => value.includes(site))?.[0];
+                                console.log("开始找位置啦", keyForValue336);
+                                let car50 = document.getElementById(keyForValue336);
+                                //这里有很大的问题呢
+                                car50.innerHTML = '<div id="move5" style="position: absolute">5<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+
+                                {#car5.innerHTML = '<div id="move5" style="position: absolute">5<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car1.png' %}"></div>';#}
+                            }
+                        }
+                    }
+                }
+            })
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 5000)
+</script>
+</html>

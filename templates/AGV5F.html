@@ -1,0 +1,820 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>N8 5楼平面图</title>
+    <style>
+        .table5F {
+            color: white;
+            width: 98%;
+            height: 98%;
+            border-spacing: 0 0;
+            border-collapse: separate;
+            text-align: center;
+            margin-left: 1%;
+            margin-right: 1%;
+            margin-bottom: 1%;
+            margin-top: 1%;
+        .
+        }
+
+        .table5F td {
+            {#border: 1px #eee8e2 solid;#}
+        }
+
+        span {
+            background-color: #79aec8;
+            font-size: 10px;
+        }
+
+        .image-container5F {
+            height: 25px; /* 固定高度，如果需要的话 */
+            overflow: hidden; /* 隐藏超出td的内容 */
+        {#display: flex; /* 使用flex布局使图片居中 */#} justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            white-space: nowrap; /* 防止图片换行 */
+        }
+
+        .image-container5F img {
+            max-width: 100%; /* 图片最大宽度为td的宽度 */
+            height: 100%; /* 保持图片的原始宽高比 */
+            /* 设置图片之间的间隔 */
+            margin-right: 10px; /* 根据需要调整 */
+        }
+
+        .image-container5F span {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 100%;height: 100%">
+    <table class="table5F">
+        <tr>
+            <td style="width: 8%;height: 6%"></td>
+            <td style="width: 4%;height: 6%"></td>
+            <td style="width: 75%;">
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="background-color: #A5A5A5;">空调机房三</td>
+                        <td style="background-color: #3B514D">C楼梯</td>
+                        <td style="background-color: white;color: green">女洗手间</td>
+                        <td style="background-color: green">茶水间</td>
+                        <td style="background-color: white;color: green">男洗手间</td>
+                        <td style="background-color: #c59753">货梯间</td>
+                        <td style="background-color: #3B514D">B楼梯</td>
+                        <td style="background-color: #A5A5A5">空调机房二</td>
+                        <td style="background-color: white;color: green">女洗手间</td>
+                        <td style="background-color: white;color: green">男洗手间</td>
+                        <td style="background-color: green">茶水间</td>
+                        <td style="background-color: #c59753">货梯间七</td>
+                    </tr>
+                </table>
+            </td>
+            <td style="width: 1%;"></td>
+            <td style="width: 4%;"></td>
+            <td style="width: 8%;background-color: #A5A5A5">钢板室</td>
+        </tr>
+        <tr>
+            <td style="height: 8%"></td>
+            <td></td>
+            <td>
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;font-size: 12px">
+                    <tr>
+                        <td style="width: 5%"></td>
+                        <td style="width: 5%"></td>
+                        <td style="width: 10%" id="Dismantfliproad5F"></td>
+                        <td style="width: 5%"></td>
+                        <td style="width: 5%"></td>
+                        <td style="width: 5%" id="DismantflipPressureroad5F"></td>
+                        <td style="width: 5%"></td>
+                        <td style="width: 5%"></td>
+                        <td style="width: 5%"></td>
+                        <td style="width: 15%" id="PressureStriproad5F"></td>
+                        <td style="width: 5%"></td>
+                        <td style="width: 15%" id="StripBoardharvesterroad5F"></td>
+                        <td style="width: 5%"></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="height: 8%"></td>
+            <td></td>
+            <td>
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;font-size: 12px">
+                    <tr>
+                        <td style="width: 5%" id="Plantmachine5F"></td>
+                        <td style="width: 5%" id="car5F02">5F02待命点</td>
+                        <td style="width: 10%"></td>
+                        <td style="width: 5%" id="Dismantflipmachine5F"></td>
+                        <td style="width: 5%" id="charging15F">充电桩1</td>
+                        <td style="width: 5%" id="car5F04">5F04待命点</td>
+                        <td style="width: 5%" id="car5F03">5F03待命点</td>
+                        <td style="width: 5%" id="charging25F">充电桩2</td>
+                        <td style="width: 5%" id="Pressuremachine5F"></td>
+                        <td style="width: 15%"></td>
+                        <td style="width: 5%" id="Stripmachine5F"></td>
+                        <td style="width: 15%"></td>
+                        <td style="width: 5%" id="Boardharvester5F"></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="background-color: #c59753">货梯间</td>
+            <td></td>
+            <td style="height: 40px;">
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="width: 5%" class="image-container5F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                        </td>
+                        <td style="width: 5%" class="image-container5F">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                        </td>
+                        <td style="width: 10%" class="image-container5F">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                        </td>
+                        <td style="width: 5%" class="image-container5F">
+                            <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                        </td>
+                        <td style="width: 5%" class="image-container5F">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                        </td>
+                        <td style="width: 5%" class="image-container5F">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                        </td>
+                        <td style="width: 5%" class="image-container5F">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                        </td>
+                        <td style="width: 5%" class="image-container5F">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                        </td>
+                        <td style="width: 5%" class="image-container5F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                        </td>
+                        <td style="width: 15%" class="image-container5F">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                        </td>
+                        <td style="width: 5%" class="image-container5F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                        </td>
+                        <td style="width: 15%" class="image-container5F">
+                            <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                        </td>
+                        <td style="width: 5%" class="image-container5F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                        </td>
+                        <td class="image-container5F">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td><span>C1</span></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="image-container5F">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+            </td>
+            <td><span>N8</span></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="image-container5F">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+            </td>
+            <td><span>N7</span></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="image-container5F">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+            </td>
+            <td><span>N6</span></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="image-container5F">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+            </td>
+            <td><span>N5</span></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="image-container5F">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+            </td>
+            <td><span>N4</span></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="image-container5F">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+            </td>
+            <td><span>N3</span></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="image-container5F">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+            </td>
+            <td><span>N2</span></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="image-container5F">
+                <img src="{% static 'img/line/撕胶带收板.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}">
+                <img src="{% static 'img/line/植板机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉前压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后压盖机.PNG' %}">
+                <img src="{% static 'img/line/炉后拆盖机.PNG' %}">
+                 <img src="{% static 'img/line/回流线.PNG' %}">
+                 <img src="{% static 'img/line/回流线.PNG' %}">
+                 <img src="{% static 'img/line/回流线.PNG' %}">
+                 <img src="{% static 'img/line/回流线.PNG' %}">
+                 <img src="{% static 'img/line/回流线.PNG' %}">
+                 <img src="{% static 'img/line/回流线.PNG' %}">
+                 <img src="{% static 'img/line/回流线.PNG' %}">
+                 <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/盖板贴胶带.PNG' %}">
+            </td>
+            <td><span>N1</span></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="height: 5%"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="height: 6%;background-color: #c59753">货梯间四</td>
+            <td></td>
+            <td>
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="background-color: #3B514D">D楼梯</td>
+                        <td style="background-color: #A5A5A5;">电气室三</td>
+                        <td style="background-color: #99c295">清洗室</td>
+                        <td style="background-color: #0a0a0a;color: #f9faf9">超声波</td>
+                        <td style="background-color: #A5A5A5">钢板室</td>
+                        <td style="background-color: green;">办公室</td>
+                        <td style="background-color: #A5A5A5">电气室</td>
+                        <td style="background-color: #A5A5A5">机房</td>
+                        <td style="background-color: #c59753">货梯间四</td>
+                        <td style="background-color: #3B514D">E楼梯</td>
+                        <td style="background-color: #A5A5A5;">电气室二</td>
+                        <td style="background-color: green">员工出入口</td>
+                        <td style="background-color: #3B514D">F楼梯</td>
+
+                    </tr>
+                </table>
+            </td>
+            <td></td>
+            <td style="background-color: #c59753">货梯间五</td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    //5F02
+    setInterval(function () {
+        fetch('/roller_agv')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {
+                    let obj5F02 = {
+                        'car5F02': [264, 265, 266],
+                        'Plantmachine5F': [570],
+                        'Dismantfliproad5F': [395, 394, 393, 392, 391, 390, 389, 296, 375, 295, 374, 294, 373, 277, 372, 297, 371, 298, 299, 370, 369, 300, 368, 301, 367, 302, 366, 303],
+                        'Dismantflipmachine5F': [388, 226, 384, 275, 387, 215, 383, 274, 386, 236, 382, 276, 238, 237, 381, 273],
+                        'DismantflipPressureroad5F': [365, 304, 364, 305, 222, 221, 363, 306, 292, 281, 362, 307, 361, 308, 234, 235],
+                        'charging15F': [318, 223],
+                        'car5F04': [239, 357],
+                        'car5F03': [269, 356],
+                        'charging25F': [232, 233],
+                        'Pressuremachine5F': [359, 195, 355, 271, 309, 358, 229, 354, 272],
+                        'PressureStriproad5F': [353, 310, 352, 311, 351, 312, 350, 313, 349, 314, 348, 315, 347, 316, 346, 317],
+                        'Stripmachine5F': [340, 225, 345, 337, 339, 224, 336, 335],
+                        'StripBoardharvesterroad5F': [344, 319, 343, 320, 342, 321, 341, 322, 334, 323, 333, 324],
+                        'Boardharvester5F': [328, 231, 31, 197, 230, 326, 268, 327, 267, 332, 325],
+                    };
+                    for (let item of data['rollerdata']) {
+                        //当车子的点位在3楼的时候
+                        if (item.carId === '5F02') {
+                            //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                            var img5F02 = document.getElementById("roller5F02move"); // 获取图片元素
+                            //现在需要获取点位的目标位置呀，我的宝
+                            var duration = 2000; // 移动的持续时间，单位为毫秒
+                            var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                            var currentStep = 0; // 当前步数，用于控制动画效果
+                            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                            if (img5F02) {
+                                var startX = document.getElementById("roller5F02move").offsetLeft; // 起始位置的左边距
+                                var startY = document.getElementById("roller5F02move").offsetTop; // 起始位置的上边距
+                                //要获取目标位置了，要遍历整个
+                                let keyWithValue = '';
+                                for (let key in obj5F02) {
+                                    if (obj5F02[key].includes(Number(item.currentPoint))) {
+                                        keyWithValue = key;
+
+                                        function getOffsetRelativeTo(element, container) {
+                                            var offsetX = 0;
+                                            var offsetY = 0;
+                                            while (element && element !== container) {
+                                                offsetX += element.offsetLeft;
+                                                offsetY += element.offsetTop;
+                                                element = element.offsetParent;
+                                            }
+                                            return {offsetX: offsetX, offsetY: offsetY};
+                                        }
+
+                                        var move3Element = document.getElementById(keyWithValue);
+                                        var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+                                        var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                        var endX5F02 = offset.offsetX;
+                                        var endY5F02 = offset.offsetY;
+                                        endX5F02 = endX5F02 - 40;
+                                        endY5F02 = endY5F02 - 110;
+                                        var moveImage = function () {
+                                            if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                            if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                img5F02.style.left = (startX + currentStep * (endX5F02 - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                img5F02.style.top = (startY + currentStep * (endY5F02 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                currentStep++; // 增加步数
+                                            } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                img5F02.style.left = endX5F02 + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                img5F02.style.top = endY5F02 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                clearInterval(intervalId); // 停止动画效果
+                                            }
+                                        };
+                                        intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                        break;
+                                    }
+                                }
+
+                            } else {
+                                //这里的地标要处理
+                                let site = Number(item.currentPoint);
+                                console.log("抓到楼:", site)
+                                const keyForValue336 = Object.entries(obj5F02).find(([key, value]) => value.includes(site))?.[0];
+                                console.log("抓到楼:", keyForValue336)
+                                let car2 = document.getElementById(keyForValue336);
+                                //这里有很大的问题呢
+                                car2.innerHTML = '<div id="roller5F02move" style="position: absolute">5F02<img  style="width: 100%;height: 100%;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+                            }
+                        }
+                    }
+                }
+            )
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 3000)
+    //5F03
+    setInterval(function () {
+        fetch('/roller_agv')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {
+                    let obj5F03 = {
+                        'car5F02': [264, 265, 266],
+                        'Plantmachine5F': [570],
+                        'Dismantfliproad5F': [395, 394, 393, 392, 391, 390, 389, 296, 375, 295, 374, 294, 373, 277, 372, 297, 371, 298, 299, 370, 369, 300, 368, 301, 367, 302, 366, 303],
+                        'Dismantflipmachine5F': [388, 226, 384, 275, 387, 215, 383, 274, 386, 236, 382, 276, 238, 237, 381, 273],
+                        'DismantflipPressureroad5F': [365, 304, 364, 305, 222, 221, 363, 306, 292, 281, 362, 307, 361, 308, 234, 235],
+                        'charging15F': [318, 223],
+                        'car5F04': [239, 357],
+                        'car5F03': [269, 356],
+                        'charging25F': [232, 233],
+                        'Pressuremachine5F': [359, 195, 355, 271, 309, 358, 229, 354, 272],
+                        'PressureStriproad5F': [353, 310, 352, 311, 351, 312, 350, 313, 349, 314, 348, 315, 347, 316, 346, 317],
+                        'Stripmachine5F': [340, 225, 345, 337, 339, 224, 336, 335],
+                        'StripBoardharvesterroad5F': [344, 319, 343, 320, 342, 321, 341, 322, 334, 323, 333, 324],
+                        'Boardharvester5F': [328, 231, 31, 197, 230, 326, 268, 327, 267, 332, 325],
+                    };
+                    for (let item of data['rollerdata']) {
+                        //当车子的点位在3楼的时候
+                        if (item.carId === '5F03') {
+                            //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                            var img5F03 = document.getElementById("roller5F03move"); // 获取图片元素
+                            //现在需要获取点位的目标位置呀，我的宝
+                            var duration = 2000; // 移动的持续时间，单位为毫秒
+                            var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                            var currentStep = 0; // 当前步数，用于控制动画效果
+                            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                            if (img5F03) {
+                                var startX = document.getElementById("roller5F03move").offsetLeft; // 起始位置的左边距
+                                var startY = document.getElementById("roller5F03move").offsetTop; // 起始位置的上边距
+                                //要获取目标位置了，要遍历整个
+                                let keyWithValue = '';
+                                for (let key in obj5F03) {
+                                    if (obj5F03[key].includes(Number(item.currentPoint))) {
+                                        keyWithValue = key;
+
+                                        function getOffsetRelativeTo(element, container) {
+                                            var offsetX = 0;
+                                            var offsetY = 0;
+                                            while (element && element !== container) {
+                                                offsetX += element.offsetLeft;
+                                                offsetY += element.offsetTop;
+                                                element = element.offsetParent;
+                                            }
+                                            return {offsetX: offsetX, offsetY: offsetY};
+                                        }
+
+                                        var move3Element = document.getElementById(keyWithValue);
+                                        var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+                                        var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                        var endX5F03 = offset.offsetX;
+                                        var endY5F03 = offset.offsetY;
+                                        endX5F03 = endX5F03 - 40;
+                                        endY5F03 = endY5F03 - 110;
+                                        var moveImage = function () {
+                                            if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                            if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                img5F03.style.left = (startX + currentStep * (endX5F03 - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                img5F03.style.top = (startY + currentStep * (endY5F03 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                currentStep++; // 增加步数
+                                            } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                img5F03.style.left = endX5F03 + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                img5F03.style.top = endY5F03 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                clearInterval(intervalId); // 停止动画效果
+                                            }
+                                        };
+                                        intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                        break;
+                                    }
+                                }
+
+                            } else {
+                                //这里的地标要处理
+                                let site = Number(item.currentPoint);
+                                console.log("抓到楼:", site)
+                                const keyForValue336 = Object.entries(obj5F03).find(([key, value]) => value.includes(site))?.[0];
+                                console.log("抓到楼:", keyForValue336)
+                                let car2 = document.getElementById(keyForValue336);
+                                //这里有很大的问题呢
+                                car2.innerHTML = '<div id="roller5F03move" style="position: absolute">5F03<img  style="width: 100%;height: 100%;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+                            }
+                        }
+                    }
+                }
+            )
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 3000)
+    //5F04
+    setInterval(function () {
+        fetch('/roller_agv')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {
+                    let obj5F04 = {
+                        'car5F02': [264, 265, 266],
+                        'Plantmachine5F': [570],
+                        'Dismantfliproad5F': [395, 394, 393, 392, 391, 390, 389, 296, 375, 295, 374, 294, 373, 277, 372, 297, 371, 298, 299, 370, 369, 300, 368, 301, 367, 302, 366, 303],
+                        'Dismantflipmachine5F': [388, 226, 384, 275, 387, 215, 383, 274, 386, 236, 382, 276, 238, 237, 381, 273],
+                        'DismantflipPressureroad5F': [365, 304, 364, 305, 222, 221, 363, 306, 292, 281, 362, 307, 361, 308, 234, 235],
+                        'charging15F': [318, 223],
+                        'car5F04': [239, 357],
+                        'car5F03': [269, 356],
+                        'charging25F': [232, 233],
+                        'Pressuremachine5F': [359, 195, 355, 271, 309, 358, 229, 354, 272],
+                        'PressureStriproad5F': [353, 310, 352, 311, 351, 312, 350, 313, 349, 314, 348, 315, 347, 316, 346, 317],
+                        'Stripmachine5F': [340, 225, 345, 337, 339, 224, 336, 335],
+                        'StripBoardharvesterroad5F': [344, 319, 343, 320, 342, 321, 341, 322, 334, 323, 333, 324],
+                        'Boardharvester5F': [328, 231, 31, 197, 230, 326, 268, 327, 267, 332, 325],
+
+                    };
+                    for (let item of data['rollerdata']) {
+                        //当车子的点位在3楼的时候
+                        if (item.carId === '5F04') {
+                            //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                            var img5F04 = document.getElementById("roller5F04move"); // 获取图片元素
+                            //现在需要获取点位的目标位置呀，我的宝
+                            var duration = 2000; // 移动的持续时间，单位为毫秒
+                            var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                            var currentStep = 0; // 当前步数，用于控制动画效果
+                            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                            if (img5F04) {
+                                var startX = document.getElementById("roller5F04move").offsetLeft; // 起始位置的左边距
+                                var startY = document.getElementById("roller5F04move").offsetTop; // 起始位置的上边距
+                                //要获取目标位置了，要遍历整个
+                                let keyWithValue = '';
+                                for (let key in obj5F04) {
+                                    if (obj5F04[key].includes(Number(item.currentPoint))) {
+                                        keyWithValue = key;
+
+                                        function getOffsetRelativeTo(element, container) {
+                                            var offsetX = 0;
+                                            var offsetY = 0;
+                                            while (element && element !== container) {
+                                                offsetX += element.offsetLeft;
+                                                offsetY += element.offsetTop;
+                                                element = element.offsetParent;
+                                            }
+                                            return {offsetX: offsetX, offsetY: offsetY};
+                                        }
+
+                                        var move3Element = document.getElementById(keyWithValue);
+                                        var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+                                        var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                        var endX5F04 = offset.offsetX;
+                                        var endY5F04 = offset.offsetY;
+                                        endX5F04 = endX5F04 - 40;
+                                        endY5F04 = endY5F04 - 110;
+                                        var moveImage = function () {
+                                            if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                            if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                img5F04.style.left = (startX + currentStep * (endX5F04 - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                img5F04.style.top = (startY + currentStep * (endY5F04 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                currentStep++; // 增加步数
+                                            } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                img5F04.style.left = endX5F04 + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                img5F04.style.top = endY5F04 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                clearInterval(intervalId); // 停止动画效果
+                                            }
+                                        };
+                                        intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                        break;
+                                    }
+                                }
+
+                            } else {
+                                //这里的地标要处理
+                                let site = Number(item.currentPoint);
+                                console.log("抓到楼:", site)
+                                const keyForValue336 = Object.entries(obj5F04).find(([key, value]) => value.includes(site))?.[0];
+                                console.log("抓到楼:", keyForValue336)
+                                let car2 = document.getElementById(keyForValue336);
+                                //这里有很大的问题呢
+                                car2.innerHTML = '<div id="roller5F04move" style="position: absolute">5F04<img  style="width: 100%;height: 100%;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+                            }
+                        }
+                    }
+                }
+            )
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 3000)
+</script>
+</html>

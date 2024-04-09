@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {# href="/static/"这个static指的是setting中配置的static   #}
+    <link rel="stylesheet" href="/static/img">
+    <title>yianAGV物联网系统</title>
+    <style>
+        .button_class {
+            margin-left: 60%;
+            margin-top: 5%;
+            font: 50px/100px "arial", sans-serif;
+            width: 40%;
+            height: 20%;
+            float: left;
+            background-color: transparent;
+        }
+
+        .yian {
+            white-space: nowrap;
+            color: #80ab56;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body style="background-color: #f6f8f6">
+
+<div class="button_class">
+    <p>TDC万物连---设备</p>
+    <li><a class="yian" href={% url 'agv_monitor' %}>AGV智能监控正在开发</a></li>
+    <li><a class="yian" href={% url 'agvlink' %}>AGV智能监控虚拟界面</a></li>
+    <li><a class="yian" href={% url 'yian' %}>测试</a></li>
+    <li><a class="yian" href={% url 'stock_link' %}>PCBA STOCK</a></li>
+    <li><a class="yian" href={% url 'smt_link' %}>SMT DASHBOARD</a></li>
+</div>
+</body>
+</html>

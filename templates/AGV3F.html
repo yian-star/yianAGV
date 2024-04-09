@@ -1,0 +1,1244 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .table3F {
+            color: white;
+            width: 98%;
+        {#width: 100%;#}{#行为20排序，列为0#} border-spacing: 0 0;
+            border-collapse: separate;
+            text-align: center;
+        {#background-color: #a5cea5;#}{#    opacity: 0.9;#} margin-left: 1%;
+            margin-right: 1%;
+            margin-bottom: 1%;
+            border-collapse: separate;
+        {#border: 1px solid #fafafa;#}
+        }
+
+        .table3F td {
+            {#border: #79aec8 1px solid;#}
+            height: 25px;
+        }
+
+        .Sline {
+            text-align: right;
+            background-color: #e3e3e2;
+            border-right: 8px solid #003060;
+            border-bottom: 8px solid #003060;
+            background-image: url("{% static 'img/line.png' %}");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .shortline {
+            text-align: right;
+            background-color: #e3e3e2;
+            border-bottom: 8px solid #003060;
+            background-image: url("{% static 'img/line.png' %}");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .Lline {
+            text-align: right;
+            background-color: #e3e3e2;
+            border-bottom: 8px solid #003060;
+            background-image: url("{% static 'img/line.png' %}");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+
+        .road {
+        {#background-color: #8fda8f;#} height: 65px;
+        {#border-right: 5px solid #00bb00;#}{#border-left: 5px solid #00bb00;#}{#border-bottom: 5px solid #00bb00;#}
+        }
+
+        .RSSD {
+            background-image: url("{% static 'img/line.png' %}");
+            text-align: right;
+            background-color: #e3e3e2;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .image-container3F {
+            height: 30px; /* 固定高度，如果需要的话 */
+            overflow: hidden; /* 隐藏超出td的内容 */
+        {#display: flex; /* 使用flex布局使图片居中 */#} justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            white-space: nowrap; /* 防止图片换行 */
+        }
+
+        .image-container3F img {
+            max-width: 100%; /* 图片最大宽度为td的宽度 */
+            height: 100%; /* 保持图片的原始宽高比 */
+            /* 设置图片之间的间隔 */
+            margin-right: 10px; /* 根据需要调整 */
+        }
+
+        .image-container3F span {
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body>
+<div style="width: 100%;height: 100%">
+    <table class="table3F">
+        <tr>
+            <td style="width:5%"></td>
+            <td style="width:4%"></td>
+            <td style="width:4%"></td>
+            <td style="width:11%"></td>
+            <td style="width:11%"></td>
+            <td style="width:13%"></td>
+            <td style="width:14%"></td>
+            <td style="width:4%;background-color: #d9835e;text-align: center;font-size: 14px">
+                北十
+            </td>
+            <td style="width:30%"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td >
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="width: 70%"></td>
+                        <td style="width: 30%;" id="car1"></td>
+                    </tr>
+                </table>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td >
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="width: 70%"></td>
+                        <td style="width: 30%;" id="car2"></td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td  >
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="width: 70%"></td>
+                        <td style="width: 30%;background-color: green;font-size: 10px" id="charging">充电区</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="height: 30px;background-color: #79aec8;font-size: 14px"></td>
+            <td style="height: 30px;background-color: #79aec8;font-size: 14px"></td>
+            <td style="height: 30px;background-color: #79aec8;font-size: 20px">
+                <img src="{% static 'img/tea.png' %}" style="height: 100%;width: 80%">
+            </td>
+            <td style="height: 30px;background-color: #79aec8;font-size: 14px">
+                <img src="{% static 'img/waste.png' %}" style="height: 40%;width: 25%;margin-left: 8%">废材区
+            </td>
+            <td style="height: 30px;background-color: #79aec8;font-size: 20px"></td>
+            <td style="height: 30px;background-color: #79aec8;font-size: 20px">
+                <img src="{% static 'img/tea.png' %} " style="height: 100%;width: 80%;margin-left: 25%">
+            </td>
+            <td id="N10"></td>
+            <td style="background-color: #d9835e;text-align: center;font-size: 14px;">
+                吸烟室
+            </td>
+            <td ></td>
+        </tr>
+        <tr>
+            <td style="height: 40px"></td>
+            <td class="road"></td>
+            <td class="road"></td>
+            <td class="road" id="tea3FSMT"></td>
+            <td class="road" id="Waste3F"></td>
+            <td class="road"></td>
+            <td class="road" id="tea3FPD"></td>
+            <td class="road" id="N10entrance"></td>
+            <td class="road" id="smoke3F"></td>
+            <td class="road"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="road"></td>
+            <td class="road"></td>
+            <td class="RSSD" style="border-right: 8px solid #121e41;border-bottom: 8px solid #121e41">
+                <span>RSSD1</span>
+            </td>
+            <td class="RSSD" style="border-right: 8px solid #121e41;border-bottom: 8px solid #121e41">
+                <span>RSSD2</span>
+            </td>
+            <td class="RSSD" style="width: 8%;border-right: 8px solid #121e41;border-bottom: 8px solid #121e41">
+                <span>RSSD3</span>
+            </td>
+            <td class="RSSD" style="border-bottom: 8px solid #121e41"><span>RSSD4</span></td>
+            <td class="road"></td>
+            <td class="shortline" rowspan="2"><span>308</span></td>
+            <td class="road"></td>
+        </tr>
+        <tr>
+            <td style="writing-mode: vertical-rl;background-color: #8a8585">电梯</td>
+            <td class="road" id="elevator3F"></td>
+            <td class="road"></td>
+            <td class="Sline" colspan="2"><span>S9</span></td>
+            <td colspan="2" class="Lline"><span>L9</span></td>
+            <td class="road" id="L9tail"></td>
+            <td class="road" id="F308tail"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="road"></td>
+            <td class="Sline" colspan="3"><span>S8</span></td>
+            <td colspan="2" class="Lline"><span>L8</span></td>
+            <td class="road" id="L8tail"></td>
+            <td class="shortline"><span>307</span></td>
+            <td class="road" id="F307tail"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="road" id="s7"></td>
+            <td class="Sline" colspan="3"><span>S7</span></td>
+            <td colspan="2" class="Lline"><span>L7</span></td>
+            <td class="road" id="L7tail"></td>
+            <td class="shortline"><span>306</span></td>
+            <td class="road" id="F306tail"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="road" id="s6"></td>
+            <td class="Sline" colspan="3"><span>S6</span></td>
+            <td colspan="2" class="Lline"><span>L6</span></td>
+            <td class="road" id="L6tail"></td>
+            <td class="shortline"><span>305</span></td>
+            <td class="road" id="F305tail"></td>
+        </tr>
+        <tr>
+            <td>
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td STYLE="width: 50%" id="charging3F01"></td>
+                        <td STYLE="width: 50%;" id="car3F01"></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="road" id="s5"></td>
+            <td class="Sline" colspan="3"><span>S5</span></td>
+            <td colspan="2" class="Lline"><span>L5</span></td>
+            <td class="road" id="L5tail"></td>
+            <td class="shortline"><span>304</span></td>
+            <td class="road" id="F304tail"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="road" id="s4"></td>
+            <td class="Sline" colspan="3"><span>S4</span></td>
+            <td colspan="2" class="Lline"><span>L4</span></td>
+            <td class="road" id="L4tail"></td>
+            <td style="border-bottom: 1px #d01e1e solid">
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="width: 10%;font-size: 8px" id="Feeder303">上料机</td>
+                        <td style="width: 20%" class="image-container3F">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                        </td>
+                        <td style="width: 10%;font-size: 8px" id="Cutmaterial303">下料机</td>
+                        <td style="" class="image-container3F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                        </td>
+                        <td style="width: 10%;text-align: right" class="image-container3F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                            <span>303</span>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+            <td class="road" id="F303tail"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="road" id="s3"></td>
+            <td class="Sline" colspan="3"><span>S3</span></td>
+            <td colspan="2" class="Lline"><span>L3</span></td>
+            <td class="road" id="L3tail"></td>
+            <td rowspan="2" style="border-bottom: 1px #f10f0f solid">
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="width: 10%;font-size: 10px" id="car3FPD">待命点</td>
+                        <td style="width: 10%;font-size: 10px;background-color: green" id="charging3FPD">充电区</td>
+                        <td style="width: 10%"></td>
+                        <td style="width: 10%"></td>
+                        <td style="width: 30%" id="line302303"></td>
+                        <td style="width: 10%;font-size: 8px;background-color: green" id="charging3F02">充电区</td>
+                        <td style="width: 10%;font-size: 8px" id="car3F02">待命点</td>
+                        <td style="width: 10%" id="Cutmaterial302"></td>
+                    </tr>
+                    <tr>
+                        <td id="Feeder302"></td>
+                        <td style="font-size: 10px">上料机</td>
+                        <td class="image-container3F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                        </td>
+                        <td style="text-align: right;" class="image-container3F">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/植板机.PNG' %}" style="margin-left: 0px">
+                        </td>
+                        <td  class="image-container3F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                        </td>
+                        <td class="image-container3F">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                            <img src="{% static 'img/line/植板机.PNG' %}">
+                        </td>
+                        <td  class="image-container3F">
+                            <img src="{% static 'img/line/回流线.PNG' %}">
+                        </td>
+                        <td style="text-align: right;font-size: 8px">
+                            下料机
+                            <span>302</span>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+            <td class="road" rowspan="2" id="F302tail"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="road" id="s2"></td>
+            <td class="Sline" colspan="3"><span>S2</span></td>
+            <td style="text-align: right" class="image-container3F">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+            </td>
+            <td style="text-align: right" class="image-container3F">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}" style="margin-right: 0px">
+                <span style="margin-right: 3px">L2</span>
+            </td>
+            <td class="road" id="L2tail"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="road" id="s1"></td>
+            <td class="image-container3F" style="text-align: left">
+                <img src="{% static 'img/line/植板机.PNG' %}" style="margin-left: 0px">
+            </td>
+            <td class="image-container3F">
+                <img src="{% static 'img/line/回流线.PNG' %}" style="margin-left: 0px">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+            </td>
+            <td style="text-align: right" class="image-container3F">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}" style="margin-right: 0px">
+                <span style="margin-right: 8px">S1</span>
+            </td>
+            <td style="text-align: right" class="image-container3F">
+                <img src="{% static 'img/line/回流线.PNG' %}">
+            </td>
+            <td style="text-align: right" class="image-container3F">
+                <img src="{% static 'img/line/擷拆翻贴.PNG' %}" style="margin-right: 0px">
+                <span style="margin-right: 3px">L1</span>
+            </td>
+            <td class="road" id="L1tail"></td>
+            <td style="border-bottom: 0;">
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="width: 15%" id="Feeder301"></td>
+                        <td style="width: 15%;font-size: 10px">上料机</td>
+                        <td class="shortline" style="width: 70%"><span>301</span></td>
+                    </tr>
+                </table>
+
+            </td>
+            <td class="road" id="F301tail"></td>
+        </tr>
+        <tr>
+            <td style="height: 40px"></td>
+            <td class="road"></td>
+            <td class="road" id="Plantboard"></td>
+            <td class="road" id="s1line"></td>
+            <td class="road">
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="width: 50px"></td>
+                        <td style="width: 50px"></td>
+                        <td style="width: 50px"></td>
+                        <td style="width: 50px" id="Dismantflip"></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="road" id="L1line"></td>
+            <td class="road">
+                <table style="width: 100%; height: 100%; border-collapse: collapse; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="width: 82%;">&nbsp;</td>
+                        <td style="width: 18%" id="Dismantboard"></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="road"></td>
+            <td class="road"></td>
+            <td class="road"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="writing-mode: vertical-rl;font-size: 10px;height: 6%">
+                <p style="background-color: #00bb00;">员工出入口</p>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    setInterval(function () {
+        fetch('/agv_route')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {
+                    let data3F = [299, 303, 302, 552, 306, 304, 407, 305, 307, 308, 309, 356, 310, 357, 350, 358, 351, 358, 352, 380, 353, 360, 354, 381, 355, 361, 79, 362, 138, 78, 77, 76, 139, 69, 369, 170, 171, 172, 371, 173, 406, 394, 341, 311, 87, 378, 312, 342, 398, 314, 313, 86, 376, 316, 315, 85, 372, 318, 317, 84, 320, 319, 83, 370, 322, 321, 82, 368, 324, 323, 81, 366, 326, 325, 80, 365, 363, 329, 384, 328, 409, 327, 382, 408, 383, 405, 177, 176, 330, 386, 344, 393, 343, 395, 418, 422, 417, 423, 416, 175, 331, 337, 332, 333, 334, 388, 389, 390, 335, 391, 336, 392, 339, 396, 340, 397, 385];
+                    let obj3F = {
+                        'elevator3F': [299, 303, 302, 552, 306, 304, 407, 305, 307, 308],
+                        'tea3FSMT': [309, 356, 310, 357, 350, 358],
+                        'Waste3F': [351, 358, 352, 380],
+                        'tea3FPD': [353, 360, 354, 381, 355, 361, 79, 362],
+                        'N10': [138, 78, 77, 76, 139, 69, 369],
+                        'smoke3F': [170, 171, 172, 371, 173],
+                        'L1tail': [406, 394, 341, 311, 87, 378],
+                        'L2tail': [312, 342, 398],
+                        'L3tail': [314, 313, 86, 376],
+                        'L4tail': [316, 315, 85, 372],
+                        'L5tail': [318, 317, 84],
+                        'L6tail': [320, 319, 83, 370],
+                        'L7tail': [322, 321, 82, 368],
+                        'L8tail': [324, 323, 81, 366],
+                        'L9tail': [326, 325, 80, 365, 363],
+                        'F301tail': [329, 384, 328, 409, 327, 382, 408, 383, 405, 177, 176],
+                        'F302tail': [330, 386],
+                        'F303tail': [344, 393, 343, 395, 418, 422, 417, 423, 416, 175],
+                        'F304tail': [331, 337, 332, 333, 334, 388, 389, 390],
+                        'F305tail': [335, 391],
+                        'F306tail': [336, 392],
+                        'F307tail': [339, 396],
+                        'F308tail': [340, 397, 385],
+                    };
+                    for (let item of data['data']) {
+                        //当车子的点位在3楼的时候
+                        if (data3F.includes(Number(item.CurrSite))) {
+                            console.log("车子到达3楼了？");
+                            if (Number(item.AgvID) == 3) {
+                                //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                                var img3 = document.getElementById("move3"); // 获取图片元素
+                                //现在需要获取点位的目标位置呀，我的宝
+                                var duration = 2000; // 移动的持续时间，单位为毫秒
+                                var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                                var currentStep = 0; // 当前步数，用于控制动画效果
+                                var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                                var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                                if (img3) {
+                                    var startX = document.getElementById("move3").offsetLeft; // 起始位置的左边距
+                                    var startY = document.getElementById("move3").offsetTop; // 起始位置的上边距
+                                    //要获取目标位置了，要遍历整个
+                                    let keyWithValue = '';
+                                    for (let key in obj3F) {
+                                        if (obj3F[key].includes(Number(item.CurrSite))) {
+                                            keyWithValue = key;
+
+                                            function getOffsetRelativeTo(element, container) {
+                                                var offsetX = 0;
+                                                var offsetY = 0;
+                                                while (element && element !== container) {
+                                                    offsetX += element.offsetLeft;
+                                                    offsetY += element.offsetTop;
+                                                    element = element.offsetParent;
+                                                }
+                                                return {offsetX: offsetX, offsetY: offsetY};
+                                            }
+
+                                            var move3Element = document.getElementById(keyWithValue);
+                                            var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+                                            var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                            var endX3 = offset.offsetX;
+                                            var endY3 = offset.offsetY;
+                                            endX3 = endX3 - 40;
+                                            endY3 = endY3 - 130;
+                                            {#var endX3 = document.getElementById(keyWithValue).offsetLeft; // 目标位置的左边距#}
+                                            {#var endY3 = document.getElementById(keyWithValue).offsetTop; // 目标位置的上边距#}
+                                            {#endX3 = endX3 + 30;#}
+                                            {#endY3 = endY3 + 10;#}
+                                            console.log("3号车当前位置？", keyWithValue);
+                                            var moveImage = function () {
+                                                if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                                if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                    img3.style.left = (startX + currentStep * (endX3 - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                    img3.style.top = (startY + currentStep * (endY3 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                    currentStep++; // 增加步数
+                                                } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                    img3.style.left = endX3 + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                    img3.style.top = endY3 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                    clearInterval(intervalId); // 停止动画效果
+                                                    console.log("结束了？");
+                                                }
+                                            };
+                                            intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                            break;
+                                        }
+                                    }
+
+                                } else {
+                                    console.log("3F位置", item.CurrSite);
+                                    let site = Number(item.CurrSite);
+                                    const keyForValue336 = Object.entries(obj3F).find(([key, value]) => value.includes(site))?.[0];
+                                    console.log("3f楼位置的那个ID", keyForValue336);
+                                    let car3 = document.getElementById(keyForValue336);
+
+                                    //这里有很大的问题呢
+                                    car3.innerHTML = '<div id="move3" style="position: absolute">3<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 5000)
+    setInterval(function () {
+        fetch('/agv_route')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {
+                    let data3F = [299, 303, 302, 552, 306, 304, 407, 305, 307, 308, 309, 356, 310, 357, 350, 358, 351, 358, 352, 380, 353, 360, 354, 381, 355, 361, 79, 362, 138, 78, 77, 76, 139, 69, 369, 170, 171, 172, 371, 173, 406, 394, 341, 311, 87, 378, 312, 342, 398, 314, 313, 86, 376, 316, 315, 85, 372, 318, 317, 84, 320, 319, 83, 370, 322, 321, 82, 368, 324, 323, 81, 366, 326, 325, 80, 365, 363, 329, 384, 328, 409, 327, 382, 408, 383, 405, 177, 176, 330, 386, 344, 393, 343, 395, 418, 422, 417, 423, 416, 175, 331, 337, 332, 333, 334, 388, 389, 390, 335, 391, 336, 392, 339, 396, 340, 397, 385];
+                    let obj3F = {
+                        'elevator3F': [299, 303, 302, 552, 306, 304, 407, 305, 307, 308],
+                        'tea3FSMT': [309, 356, 310, 357, 350, 358],
+                        'Waste3F': [351, 358, 352, 380],
+                        'tea3FPD': [353, 360, 354, 381, 355, 361, 79, 362],
+                        'N10': [138, 78, 77, 76, 139, 69, 369],
+                        'smoke3F': [170, 171, 172, 371, 173],
+                        'L1tail': [406, 394, 341, 311, 87, 378],
+                        'L2tail': [312, 342, 398],
+                        'L3tail': [314, 313, 86, 376],
+                        'L4tail': [316, 315, 85, 372],
+                        'L5tail': [318, 317, 84],
+                        'L6tail': [320, 319, 83, 370],
+                        'L7tail': [322, 321, 82, 368],
+                        'L8tail': [324, 323, 81, 366],
+                        'L9tail': [326, 325, 80, 365, 363],
+                        'F301tail': [329, 384, 328, 409, 327, 382, 408, 383, 405, 177, 176],
+                        'F302tail': [330, 386],
+                        'F303tail': [344, 393, 343, 395, 418, 422, 417, 423, 416, 175],
+                        'F304tail': [331, 337, 332, 333, 334, 388, 389, 390],
+                        'F305tail': [335, 391],
+                        'F306tail': [336, 392],
+                        'F307tail': [339, 396],
+                        'F308tail': [340, 397, 385],
+                    };
+                    for (let item of data['data']) {
+                        //当车子的点位在3楼的时候
+                        if (data3F.includes(Number(item.CurrSite))) {
+                            console.log("车子到达3楼了？");
+                            if (Number(item.AgvID) == 4) {
+                                //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                                var img4 = document.getElementById("move4"); // 获取图片元素
+                                //现在需要获取点位的目标位置呀，我的宝
+                                var duration = 2000; // 移动的持续时间，单位为毫秒
+                                var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                                var currentStep = 0; // 当前步数，用于控制动画效果
+                                var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                                var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                                if (img4) {
+                                    var startX = document.getElementById("move4").offsetLeft; // 起始位置的左边距
+                                    var startY = document.getElementById("move4").offsetTop; // 起始位置的上边距
+                                    //要获取目标位置了，要遍历整个
+                                    let keyWithValue = '';
+                                    for (let key in obj3F) {
+                                        if (obj3F[key].includes(Number(item.CurrSite))) {
+                                            keyWithValue = key;
+
+                                            function getOffsetRelativeTo(element, container) {
+                                                var offsetX = 0;
+                                                var offsetY = 0;
+                                                while (element && element !== container) {
+                                                    offsetX += element.offsetLeft;
+                                                    offsetY += element.offsetTop;
+                                                    element = element.offsetParent;
+                                                }
+                                                return {offsetX: offsetX, offsetY: offsetY};
+                                            }
+
+                                            var move3Element = document.getElementById(keyWithValue);
+                                            var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+
+                                            var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                            var endX3 = offset.offsetX;
+                                            var endY3 = offset.offsetY;
+                                            endX3 = endX3 - 40;
+                                            endY3 = endY3 - 120;
+                                            {#var endX3 = document.getElementById(keyWithValue).offsetLeft; // 目标位置的左边距#}
+                                            {#var endY3 = document.getElementById(keyWithValue).offsetTop; // 目标位置的上边距#}
+                                            {#endX3 = endX3 + 30;#}
+                                            {#endY3 = endY3 + 10;#}
+                                            console.log("3号车当前位置？", keyWithValue);
+                                            var moveImage = function () {
+                                                if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                                if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                    img4.style.left = (startX + currentStep * (endX3 - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                    img4.style.top = (startY + currentStep * (endY3 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                    currentStep++; // 增加步数
+                                                } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                    img4.style.left = endX3 + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                    img4.style.top = endY3 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                    clearInterval(intervalId); // 停止动画效果
+                                                    console.log("结束了？");
+                                                }
+                                            };
+                                            intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                            break;
+                                        }
+                                    }
+
+                                } else {
+                                    console.log("3F位置", item.CurrSite);
+                                    let site = Number(item.CurrSite);
+                                    const keyForValue336 = Object.entries(obj3F).find(([key, value]) => value.includes(site))?.[0];
+                                    //这里有很大的问题呢
+                                    let car4 = document.getElementById(keyForValue336);
+                                    car4.innerHTML = '<div id="move4" style="position: absolute">4<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 5000)
+    setInterval(function () {
+        fetch('/agv_route')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {
+                    let data3F = [299, 303, 302, 552, 306, 304, 407, 305, 307, 308, 309, 356, 310, 357, 350, 358, 351, 358, 352, 380, 353, 360, 354, 381, 355, 361, 79, 362, 138, 78, 77, 76, 139, 69, 369, 170, 171, 172, 371, 173, 406, 394, 341, 311, 87, 378, 312, 342, 398, 314, 313, 86, 376, 316, 315, 85, 372, 318, 317, 84, 320, 319, 83, 370, 322, 321, 82, 368, 324, 323, 81, 366, 326, 325, 80, 365, 363, 329, 384, 328, 409, 327, 382, 408, 383, 405, 177, 176, 330, 386, 344, 393, 343, 395, 418, 422, 417, 423, 416, 175, 331, 337, 332, 333, 334, 388, 389, 390, 335, 391, 336, 392, 339, 396, 340, 397, 385];
+                    let obj3F = {
+                        'elevator3F': [299, 303, 302, 552, 306, 304, 407, 305, 307, 308],
+                        'tea3FSMT': [309, 356, 310, 357, 350, 358],
+                        'Waste3F': [351, 358, 352, 380],
+                        'tea3FPD': [353, 360, 354, 381, 355, 361, 79, 362],
+                        'N10': [138, 78, 77, 76, 139, 69, 369],
+                        'smoke3F': [170, 171, 172, 371, 173],
+                        'L1tail': [406, 394, 341, 311, 87, 378],
+                        'L2tail': [312, 342, 398],
+                        'L3tail': [314, 313, 86, 376],
+                        'L4tail': [316, 315, 85, 372],
+                        'L5tail': [318, 317, 84],
+                        'L6tail': [320, 319, 83, 370],
+                        'L7tail': [322, 321, 82, 368],
+                        'L8tail': [324, 323, 81, 366],
+                        'L9tail': [326, 325, 80, 365, 363],
+                        'F301tail': [329, 384, 328, 409, 327, 382, 408, 383, 405, 177, 176],
+                        'F302tail': [330, 386],
+                        'F303tail': [344, 393, 343, 395, 418, 422, 417, 423, 416, 175],
+                        'F304tail': [331, 337, 332, 333, 334, 388, 389, 390],
+                        'F305tail': [335, 391],
+                        'F306tail': [336, 392],
+                        'F307tail': [339, 396],
+                        'F308tail': [340, 397, 385],
+                    };
+                    for (let item of data['data']) {
+                        //当车子的点位在3楼的时候
+                        if (data3F.includes(Number(item.CurrSite))) {
+                            console.log("车子到达3楼了？");
+                            if (Number(item.AgvID) == 5) {
+                                //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                                var img5 = document.getElementById("move5"); // 获取图片元素
+                                //现在需要获取点位的目标位置呀，我的宝
+                                var duration = 2000; // 移动的持续时间，单位为毫秒
+                                var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                                var currentStep = 0; // 当前步数，用于控制动画效果
+                                var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                                var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                                if (img5) {
+                                    var startX = document.getElementById("move5").offsetLeft; // 起始位置的左边距
+                                    var startY = document.getElementById("move5").offsetTop; // 起始位置的上边距
+                                    //要获取目标位置了，要遍历整个
+                                    let keyWithValue = '';
+                                    for (let key in obj3F) {
+                                        if (obj3F[key].includes(Number(item.CurrSite))) {
+                                            keyWithValue = key;
+
+                                            function getOffsetRelativeTo(element, container) {
+                                                var offsetX = 0;
+                                                var offsetY = 0;
+                                                while (element && element !== container) {
+                                                    offsetX += element.offsetLeft;
+                                                    offsetY += element.offsetTop;
+                                                    element = element.offsetParent;
+                                                }
+                                                return {offsetX: offsetX, offsetY: offsetY};
+                                            }
+
+                                            var move3Element = document.getElementById(keyWithValue);
+                                            var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+
+                                            var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                            var endX3 = offset.offsetX;
+                                            var endY3 = offset.offsetY;
+                                            endX3 = endX3 - 40;
+                                            endY3 = endY3 - 100;
+                                            {#var endX3 = document.getElementById(keyWithValue).offsetLeft; // 目标位置的左边距#}
+                                            {#var endY3 = document.getElementById(keyWithValue).offsetTop; // 目标位置的上边距#}
+                                            {#endX3 = endX3 + 30;#}
+                                            {#endY3 = endY3 + 10;#}
+                                            console.log("5号车当前位置？", keyWithValue);
+                                            var moveImage = function () {
+                                                if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                                if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                    img5.style.left = (startX + currentStep * (endX3 - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                    img5.style.top = (startY + currentStep * (endY3 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                    currentStep++; // 增加步数
+                                                } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                    img5.style.left = endX3 + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                    img5.style.top = endY3 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                    clearInterval(intervalId); // 停止动画效果
+                                                    console.log("结束了？");
+                                                }
+                                            };
+                                            intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                            break;
+                                        }
+                                    }
+
+                                } else {
+                                    console.log("3F位置", item.CurrSite);
+                                    let site = Number(item.CurrSite);
+                                    const keyForValue336 = Object.entries(obj3F).find(([key, value]) => value.includes(site))?.[0];
+                                    //这里有很大的问题呢
+                                    let car5 = document.getElementById(keyForValue336);
+                                    car5.innerHTML = '<div id="move5" style="position: absolute">3<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 7000)
+    // 磁条
+    setInterval(function () {
+        fetch('/magnetism_agv_route')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {
+                    let obj3F = {
+                        'elevator3F': [127, 134, 209, 210, 208, 125, 126, 307, 308],
+                        'tea3FSMT': [309, 356, 310, 357, 350, 358],
+                        'Waste3F': [351, 358, 352, 380],
+                        'tea3FPD': [353, 360, 354, 381, 355, 361, 79, 362],
+                        'N10': [75, 74, 205, 57, 68, 67, 206, 66, 73, 72, 71, 70, 58, 59, 60, 64, 65],
+                        'N10entrance': [138, 78, 77, 76, 139, 69],
+                        'charging': [63],
+                        'car1': [61],
+                        'car2': [62],
+                        's1': [157, 161],
+                        's2': [156, 162],
+                        's3': [155, 163],
+                        's4': [154, 164],
+                        's5': [168, 169],
+                        's6': [153, 165],
+                        's7': [152, 166],
+                    };
+                    for (let item of data['magnetismdata']) {
+                        //当车子的点位在3楼的时候
+                        if (Number(item.AgvID) == 1) {
+                            //console.log("哇塞，是1号车子吗？");
+                            //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                            var img1 = document.getElementById("move1"); // 获取图片元素
+                            //现在需要获取点位的目标位置呀，我的宝
+                            var duration = 2000; // 移动的持续时间，单位为毫秒
+                            var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                            var currentStep = 0; // 当前步数，用于控制动画效果
+                            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                            if (img1) {
+                                var startX = document.getElementById("move1").offsetLeft; // 起始位置的左边距
+                                var startY = document.getElementById("move1").offsetTop; // 起始位置的上边距
+                                //要获取目标位置了，要遍历整个
+                                let keyWithValue = '';
+                                for (let key in obj3F) {
+                                    if (obj3F[key].includes(Number(item.CurrSite))) {
+                                        keyWithValue = key;
+
+                                        function getOffsetRelativeTo(element, container) {
+                                            var offsetX = 0;
+                                            var offsetY = 0;
+                                            while (element && element !== container) {
+                                                offsetX += element.offsetLeft;
+                                                offsetY += element.offsetTop;
+                                                element = element.offsetParent;
+                                            }
+                                            return {offsetX: offsetX, offsetY: offsetY};
+                                        }
+
+                                        var move3Element = document.getElementById(keyWithValue);
+                                        var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+                                        var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                        var endX3 = offset.offsetX;
+                                        var endY3 = offset.offsetY;
+                                        endX3 = endX3 - 40;
+                                        endY3 = endY3 - 120;
+                                        //console.log("1号车当前位置？", keyWithValue);
+                                        var moveImage = function () {
+                                            if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                            if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                img1.style.left = (startX + currentStep * (endX3 - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                img1.style.top = (startY + currentStep * (endY3 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                currentStep++; // 增加步数
+                                            } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                img1.style.left = endX3 + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                img1.style.top = endY3 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                clearInterval(intervalId); // 停止动画效果
+                                                //console.log("1号车子结束了？");
+                                            }
+                                        };
+                                        intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                        break;
+                                    }
+                                }
+
+                            } else {
+                                //console.log("1号车子应该在这里呀", item.CurrSite);
+                                let site = Number(item.CurrSite);
+                                const keyForValue336 = Object.entries(obj3F).find(([key, value]) => value.includes(site))?.[0];
+                                //console.log("3f楼位置的那个ID", keyForValue336);
+                                let car1 = document.getElementById(keyForValue336);
+                                //这里有很大的问题呢
+                                car1.innerHTML = '<div id="move1" style="position: absolute">1<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car2.png' %}"></div>';
+                            }
+                        }
+                    }
+                }
+            )
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 5000)
+    setInterval(function () {
+        fetch('/magnetism_agv_route')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {
+                    let obj3F = {
+                        'elevator3F': [127, 134, 209, 210, 208, 125, 126, 307, 308],
+                        'tea3FSMT': [309, 356, 310, 357, 350, 358],
+                        'Waste3F': [351, 358, 352, 380],
+                        'tea3FPD': [353, 360, 354, 381, 355, 361, 79, 362],
+                        'N10': [75, 74, 205, 57, 68, 67, 206, 66, 73, 72, 71, 70, 58, 59, 60, 64, 65],
+                        'N10entrance': [138, 78, 77, 76, 139, 69],
+                        'charging': [63],
+                        'car1': [61],
+                        'car2': [62],
+                        's1': [157, 161],
+                        's2': [156, 162],
+                        's3': [155, 163],
+                        's4': [154, 164],
+                        's5': [168, 169],
+                        's6': [153, 165],
+                        's7': [152, 166],
+                    };
+                    for (let item of data['magnetismdata']) {
+                        //当车子的点位在3楼的时候
+                        //console.log("哇塞，是2号车子吗？");
+                        if (Number(item.AgvID) == 2) {
+                            //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                            var img2 = document.getElementById("move2"); // 获取图片元素
+                            //现在需要获取点位的目标位置呀，我的宝
+                            var duration = 2000; // 移动的持续时间，单位为毫秒
+                            var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                            var currentStep = 0; // 当前步数，用于控制动画效果
+                            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                            if (img2) {
+                                var startX = document.getElementById("move2").offsetLeft; // 起始位置的左边距
+                                var startY = document.getElementById("move2").offsetTop; // 起始位置的上边距
+                                //要获取目标位置了，要遍历整个
+                                let keyWithValue = '';
+                                for (let key in obj3F) {
+                                    if (obj3F[key].includes(Number(item.CurrSite))) {
+                                        keyWithValue = key;
+
+                                        function getOffsetRelativeTo(element, container) {
+                                            var offsetX = 0;
+                                            var offsetY = 0;
+                                            while (element && element !== container) {
+                                                offsetX += element.offsetLeft;
+                                                offsetY += element.offsetTop;
+                                                element = element.offsetParent;
+                                            }
+                                            return {offsetX: offsetX, offsetY: offsetY};
+                                        }
+
+                                        var move3Element = document.getElementById(keyWithValue);
+                                        var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+                                        var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                        var endX3 = offset.offsetX;
+                                        var endY3 = offset.offsetY;
+                                        endX3 = endX3 - 40;
+                                        endY3 = endY3 - 120;
+                                        //console.log("2号车当前位置？", keyWithValue);
+                                        var moveImage = function () {
+                                            if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                            if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                img2.style.left = (startX + currentStep * (endX3 - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                img2.style.top = (startY + currentStep * (endY3 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                currentStep++; // 增加步数
+                                            } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                img2.style.left = endX3 + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                img2.style.top = endY3 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                clearInterval(intervalId); // 停止动画效果
+                                                //console.log("结束了？");
+                                            }
+                                        };
+                                        intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                        break;
+                                    }
+                                }
+
+                            } else {
+                                //console.log("3F位置", item.CurrSite);
+                                let site = Number(item.CurrSite);
+                                const keyForValue336 = Object.entries(obj3F).find(([key, value]) => value.includes(site))?.[0];
+                                //console.log("3f楼位置的那个ID", keyForValue336);
+                                let car2 = document.getElementById(keyForValue336);
+                                //这里有很大的问题呢
+                                car2.innerHTML = '<div id="move2" style="position: absolute">2<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car2.png' %}"></div>';
+                            }
+                        }
+                    }
+                }
+            )
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 5000)
+    //滚筒 3F01
+    setInterval(function () {
+        fetch('/roller_agv')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {
+                    let obj3F01 = {
+                        'charging3F01': [251],
+                        'car3F01': [250],
+                        's1': [508, 509, 318, 375, 319],
+                        's2': [505, 506, 507],
+                        's3': [214, 213, 212],
+                        's4': [217, 216],
+                        's5': [245, 249, 220, 219, 218],
+                        'Plantboard': [4, 6, 15, 16, 27, 231],
+                        's1line': [28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 60, 61, 62, 63],
+                        'Dismantflip': [17, 7, 8, 9, 10, 11, 12, 13, 14, 18, 20, 19],
+                        'L1line': [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 79],
+                        'Dismantboard': [21, 22, 24, 196, 25, 252],
+                    };
+                    for (let item of data['rollerdata']) {
+                        //当车子的点位在3楼的时候
+                        if (item.carId === '3F01') {
+                            //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                            var img3F01 = document.getElementById("roller3F01move"); // 获取图片元素
+                            //现在需要获取点位的目标位置呀，我的宝
+                            var duration = 2000; // 移动的持续时间，单位为毫秒
+                            var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                            var currentStep = 0; // 当前步数，用于控制动画效果
+                            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                            if (img3F01) {
+                                var startX = document.getElementById("roller3F01move").offsetLeft; // 起始位置的左边距
+                                var startY = document.getElementById("roller3F01move").offsetTop; // 起始位置的上边距
+                                //要获取目标位置了，要遍历整个
+                                let keyWithValue = '';
+                                for (let key in obj3F01) {
+                                    if (obj3F01[key].includes(Number(item.currentPoint))) {
+                                        keyWithValue = key;
+
+                                        function getOffsetRelativeTo(element, container) {
+                                            var offsetX = 0;
+                                            var offsetY = 0;
+                                            while (element && element !== container) {
+                                                offsetX += element.offsetLeft;
+                                                offsetY += element.offsetTop;
+                                                element = element.offsetParent;
+                                            }
+                                            return {offsetX: offsetX, offsetY: offsetY};
+                                        }
+
+                                        var move3Element = document.getElementById(keyWithValue);
+                                        var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+                                        var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                        var endX3F01 = offset.offsetX;
+                                        var endY3F01 = offset.offsetY;
+                                        endX3F01 = endX3F01 - 40;
+                                        endY3F01 = endY3F01 - 120;
+                                        var moveImage = function () {
+                                            if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                            if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                img3F01.style.left = (startX + currentStep * (endX3F01 - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                img3F01.style.top = (startY + currentStep * (endY3F01 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                currentStep++; // 增加步数
+                                            } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                img3F01.style.left = endX3F01 + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                img3F01.style.top = endY3F01 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                clearInterval(intervalId); // 停止动画效果
+                                            }
+                                        };
+                                        intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                        break;
+                                    }
+                                }
+
+                            } else {
+                                //这里的地标要处理
+                                let site = Number(item.currentPoint);
+                                console.log("抓到楼:", site)
+                                const keyForValue336 = Object.entries(obj3F01).find(([key, value]) => value.includes(site))?.[0];
+                                console.log("抓到楼:", keyForValue336)
+                                let car2 = document.getElementById(keyForValue336);
+                                //这里有很大的问题呢
+                                car2.innerHTML = '<div id="roller3F01move" style="position: absolute">3F01<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+                            }
+                        }
+                    }
+                }
+            )
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 5000)
+    //滚筒 3FPD
+    setInterval(function () {
+        fetch('/roller_agv')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {
+                    let obj3FPD = {
+                        'L1tail': [307, 601, 304, 243, 305, 199],
+                        'Feeder301': [306, 245, 244, 236],
+                        'L2tail': [500, 365, 364, 501, 363],
+                        'Feeder302': [360, 572, 362, 361, 502, 503],
+                        'car3FPD': [504, 240, 241],
+                        'charging3FPD': [242],
+                    };
+                    for (let item of data['rollerdata']) {
+                        //当车子的点位在3楼的时候
+                        if (item.carId === '3FPD') {
+                            //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                            var img3FPD = document.getElementById("roller3FPDmove"); // 获取图片元素
+                            //现在需要获取点位的目标位置呀，我的宝
+                            var duration = 2000; // 移动的持续时间，单位为毫秒
+                            var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                            var currentStep = 0; // 当前步数，用于控制动画效果
+                            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                            if (img3FPD) {
+                                var startX = document.getElementById("roller3FPDmove").offsetLeft; // 起始位置的左边距
+                                var startY = document.getElementById("roller3FPDmove").offsetTop; // 起始位置的上边距
+                                //要获取目标位置了，要遍历整个
+                                let keyWithValue = '';
+                                for (let key in obj3FPD) {
+                                    if (obj3FPD[key].includes(Number(item.currentPoint))) {
+                                        keyWithValue = key;
+
+                                        function getOffsetRelativeTo(element, container) {
+                                            var offsetX = 0;
+                                            var offsetY = 0;
+                                            while (element && element !== container) {
+                                                offsetX += element.offsetLeft;
+                                                offsetY += element.offsetTop;
+                                                element = element.offsetParent;
+                                            }
+                                            return {offsetX: offsetX, offsetY: offsetY};
+                                        }
+
+                                        var move3Element = document.getElementById(keyWithValue);
+                                        var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+                                        var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                        var endX3FPD = offset.offsetX;
+                                        var endY3FPD = offset.offsetY;
+                                        endX3FPD = endX3FPD - 40;
+                                        endY3FPD = endY3FPD - 120;
+                                        var moveImage = function () {
+                                            if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                            if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                img3FPD.style.left = (startX + currentStep * (endX3FPD - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                img3FPD.style.top = (startY + currentStep * (endY3FPD - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                currentStep++; // 增加步数
+                                            } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                img3FPD.style.left = endX3FPD + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                img3FPD.style.top = endY3FPD + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                clearInterval(intervalId); // 停止动画效果
+                                            }
+                                        };
+                                        intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                        break;
+                                    }
+                                }
+
+                            } else {
+                                //这里的地标要处理
+                                let site = Number(item.currentPoint);
+                                console.log("抓到楼:", site)
+                                const keyForValue336 = Object.entries(obj3FPD).find(([key, value]) => value.includes(site))?.[0];
+                                console.log("抓到楼:", keyForValue336)
+                                let car2 = document.getElementById(keyForValue336);
+                                //这里有很大的问题呢
+                                car2.innerHTML = '<div id="roller3FPDmove" style="position: absolute">3FPD<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+                            }
+                        }
+                    }
+                }
+            )
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 5000)
+    //滚筒 3F02
+    setInterval(function () {
+        fetch('/roller_agv')//发送请求到后端接口
+            .then(response => response.json())//将响应解析为JSON格式
+            .then(data => {
+                    let obj3F02 = {
+                        'Feeder302': [510,511,512,513,514,515,516,517],
+                        'Feeder303': [101, 102, 105, 104, 103, 107, 106, 108, 109, 110, 111],
+                        'Cutmaterial303': [112,519,520,113,114,115,116,117,118,119],
+                        'line302303': [543,542,541,540,539,538,537,536,535,534,533,532,531,530,529],
+                        'charging3F02': [545],
+                        'car3F02': [571, 546],
+                        'Cutmaterial302': [528,524,527,521,526,523,525,522],
+                    };
+                    for (let item of data['rollerdata']) {
+                        //当车子的点位在3楼的时候
+                        if (item.carId === '3F02') {
+                            //先去获取图片元素，没有获取到就到else里面去先直接显示出来
+                            var img3F02 = document.getElementById("roller3F02move"); // 获取图片元素
+                            //现在需要获取点位的目标位置呀，我的宝
+                            var duration = 2000; // 移动的持续时间，单位为毫秒
+                            var steps = duration / 10 // 每秒的步数，根据持续时间计算步数
+                            var currentStep = 0; // 当前步数，用于控制动画效果
+                            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+                            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+                            if (img3F02) {
+                                var startX = document.getElementById("roller3F02move").offsetLeft; // 起始位置的左边距
+                                var startY = document.getElementById("roller3F02move").offsetTop; // 起始位置的上边距
+                                //要获取目标位置了，要遍历整个
+                                let keyWithValue = '';
+                                for (let key in obj3F02) {
+                                    if (obj3F02[key].includes(Number(item.currentPoint))) {
+                                        keyWithValue = key;
+
+                                        function getOffsetRelativeTo(element, container) {
+                                            var offsetX = 0;
+                                            var offsetY = 0;
+                                            while (element && element !== container) {
+                                                offsetX += element.offsetLeft;
+                                                offsetY += element.offsetTop;
+                                                element = element.offsetParent;
+                                            }
+                                            return {offsetX: offsetX, offsetY: offsetY};
+                                        }
+
+                                        var move3Element = document.getElementById(keyWithValue);
+                                        var flexContainer = move3Element.closest('.F1agv'); // 假设'.F1agv'是flex容器的class
+                                        var offset = getOffsetRelativeTo(move3Element, flexContainer);
+                                        var endX3F02 = offset.offsetX;
+                                        var endY3F02 = offset.offsetY;
+                                        endX3F02 = endX3F02 - 40;
+                                        endY3F02 = endY3F02 - 120;
+                                        var moveImage = function () {
+                                            if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                                            if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                                                img3F02.style.left = (startX + currentStep * (endX3F02 - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                                                img3F02.style.top = (startY + currentStep * (endY3F02 - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                                                currentStep++; // 增加步数
+                                            } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                                                img3F02.style.left = endX3F02 + "px"; // 设置图片的最终位置为目标单元格的左边距
+                                                img3F02.style.top = endY3F02 + "px"; // 设置图片的最终位置为目标单元格的上边距
+                                                clearInterval(intervalId); // 停止动画效果
+                                            }
+                                        };
+                                        intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+                                        break;
+                                    }
+                                }
+
+                            } else {
+                                //这里的地标要处理
+                                let site = Number(item.currentPoint);
+                                console.log("抓到楼:", site)
+                                const keyForValue336 = Object.entries(obj3F02).find(([key, value]) => value.includes(site))?.[0];
+                                console.log("抓到楼:", keyForValue336)
+                                let car2 = document.getElementById(keyForValue336);
+                                //这里有很大的问题呢
+                                car2.innerHTML = '<div id="roller3F02move" style="position: absolute">3F02<img  style="width: 35px;height: 20px;position: absolute" src="{% static 'img/car1.png' %}"></div>';
+                            }
+                        }
+                    }
+                }
+            )
+            .catch(error => {//处理请求错误
+                console.error('Error:', error);
+            })
+    }, 5000)
+</script>
+</html>

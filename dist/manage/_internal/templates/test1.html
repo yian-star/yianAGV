@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            position: relative;
+        }
+
+        td {
+            border: 1px solid black;
+            width: 100px;
+            height: 50px;
+            vertical-align: middle;
+        }
+
+        div {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<table id="myTable" style="font-size: 108px">
+    <tr>
+        <td id="cell1"></td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell2">Cell 2</td>
+        <td id="cell3">
+            <div style="background-color: red"></div>
+        </td>
+    </tr>
+    <tr>
+        <td id="cell4">
+            <div id="myImage" style="position: absolute;background-color: #00bb00;height: 35PX; width: 25PX;"><img
+                    src="../static/img/car1.png" style="height: 50px; width: 50px;"></div>
+        </td>
+        <td id="cell5">Cell 5</td>
+        <td id="cell6">Cell 6</td>
+    </tr>
+</table>
+<button onclick="moveImageToCell()">开始移动</button>
+<script>
+
+        setInterval(function () {
+            console.log("大爷的");
+            var startX = document.getElementById("myImage").offsetLeft; // 起始位置的左边距
+            var startY = document.getElementById("myImage").offsetTop; // 起始位置的上边距
+            var endX = document.getElementById("cell3").offsetLeft; // 目标位置的左边距
+            var endY = document.getElementById("cell3").offsetTop; // 目标位置的上边距
+            var img = document.getElementById("myImage"); // 获取图片元素
+            var duration = 2000; // 移动的持续时间，单位为毫秒
+            var steps = duration / 10; // 每秒的步数，根据持续时间计算步数
+            var currentStep = 0; // 当前步数，用于控制动画效果
+            var startTime = null; // 记录动画开始的时间，用于计算时间间隔和移动速度
+            var intervalId = null; // 存储setInterval函数的返回值，用于在动画结束后清除定时器
+            var moveImage = function () {
+                if (!startTime) startTime = new Date().getTime(); // 初始化开始时间戳
+                //alert(startTime);
+                if (currentStep < steps) { // 如果未达到目标步数，继续移动图片
+                    img.style.left = (startX + currentStep * (endX - startX) / steps) + "px"; // 向右移动图片，根据步长逐步增加左边距
+                    img.style.top = (startY + currentStep * (endY - startY) / steps) + "px"; // 向上移动图片，根据步长逐步增加上边距
+                    currentStep++; // 增加步数
+
+                } else { // 如果达到目标步数，将图片放置在目标单元格中，并清除定时器
+                    img.style.left = endX + "px"; // 设置图片的最终位置为目标单元格的左边距
+                    img.style.top = endY + "px"; // 设置图片的最终位置为目标单元格的上边距
+                    clearInterval(intervalId); // 停止动画效果
+                }
+            };
+            intervalId = setInterval(moveImage, 10); // 每一步的时间间隔为10毫秒，开始动画效果
+        }, 2000)
+
+
+</script>
+</body>
+</html>

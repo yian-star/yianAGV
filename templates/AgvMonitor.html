@@ -1,0 +1,762 @@
+{% load static %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Agv Monitor</title>
+        {#        <link href="/static/css/bootstrap.css" rel="stylesheet">#}
+        {#        <link href="{% static "/css/bootstrap.css" %}" rel="stylesheet">#}
+        <link rel="stylesheet" href="/static/css/base.css">
+        <link rel="stylesheet" href="/static/css/index.css">
+        <script src="/static/js/jquery-2.2.1.min.js"></script>
+        <script src="{% static 'js/jquery-2.2.1.min.js' %}"></script>
+
+        <style>
+            @keyframes scrollUp {
+                0% {
+                    transform: translateY(0);
+                }
+                100% {
+                    transform: translateY(-100%); /* 假设表格的高度是div高度的整数倍 */
+                }
+            }
+
+            .information {
+                animation: scrollUp 25s linear infinite; /* 假设每5秒完成一次滚动 */
+            }
+
+            .t_title {
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                font-size: 2.5em;
+                line-height: 80px;
+                color: #fff;
+            }
+
+            .horizontal-list {
+                display: flex; /* 使用flex布局 */
+                list-style-type: none; /* 移除默认的列表样式 */
+                padding: 0; /* 移除默认的列表内边距 */
+            }
+
+            .horizontal-list li {
+                position: relative;
+                display: inline-flex; /* 让列表项本身也支持内部元素的flex布局 */
+                align-items: center; /* 垂直居中列表项内容 */
+                justify-content: center; /* 水平居中列表项内容 */
+                padding: 10px 20px; /* 设置内边距 */
+                margin: 0 10px; /* 设置外边距 */
+                background-color: rgba(0, 0, 0, 0.1); /* 轻微背景色 */
+                color: white; /* 文字颜色 */
+                font-size: 16px; /* 文字大小 */
+                border: 2px solid transparent; /* 透明边框 */
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* 蓝色阴影 */
+                transition: all 0.3s ease; /* 过渡效果 */
+            }
+
+            .horizontal-list li::before,
+            .horizontal-list li::after {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                width: 100%;
+                height: 2px;
+                background-size: 10px 100%; /* 渐变背景的大小 */
+            }
+
+            .horizontal-list li::before {
+                top: 0;
+                background-image: linear-gradient(to right, transparent, rgba(0, 255, 0, 0.5), transparent); /* 红色渐变顶边 */
+            }
+
+            .horizontal-list li::after {
+                bottom: 0;
+                background-image: linear-gradient(to right, transparent, rgba(0, 255, 0, 0.5), transparent); /* 绿色渐变底边 */
+            }
+
+            .horizontal-list li:hover {
+                box-shadow: 0 0 15px rgba(0, 255, 255, 1); /* 鼠标悬停时增强阴影效果 */
+                transform: scale(1.05); /* 稍微放大 */
+            }
+
+        </style>
+    </head>
+    <body>
+    <!--header-->
+    <div class="header">
+        <div class="bg_header">
+            <div class="header_nav fl t_title">
+                AGV 监控大数据中心
+            </div>
+
+        </div>
+        <div style="display: flex">
+            <div style="color: white;width: 50%;margin-left: 10%;margin-right: 1%">
+                <ul class="horizontal-list">
+                    <li id="floor1">N8 1楼</li>
+                    <li id="floor3">N8 3楼</li>
+                </ul>
+            </div>
+            <div style="color: white;width: 50%;margin-left: 40%;margin-right: 1%">
+                <ul class="horizontal-list">
+                    <li id="floor4">N8 4楼</li>
+                    <li id="floor5">N8 5楼</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--main-->
+    <div class="data_content" style="margin-top: 30px">
+        <!-- <div class="data_time">
+            温馨提示: 点击模块后跳转至详情页面。
+        </div> -->
+
+        <div class="data_main">
+            <div class="main_left fl">
+            </div>
+            <div class="main_center fl">
+                <div class="center_text" style="position: relative;">
+                    <!--左上边框-->
+                    <div class="t_line_box">
+                        <i class="t_l_line"></i>
+                        <i class="l_t_line"></i>
+                    </div>
+                    <!--右上边框-->
+                    <div class="t_line_box">
+                        <i class="t_r_line"></i>
+                        <i class="r_t_line"></i>
+                    </div>
+                    <!--左下边框-->
+                    <div class="t_line_box">
+                        <i class="l_b_line"></i>
+                        <i class="b_l_line"></i>
+                    </div>
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                        <i class="r_b_line"></i>
+                        <i class="b_r_line"></i>
+                    </div>
+                    <div class="main_title" style="width: 230px;">
+                        <img src="{% static "/img/t_3.png" %}" alt="">
+                        AGV Roadmap
+                    </div>
+                    <div style="display: flex;height: 100%">
+                        <div class="F1agv" id="contentContainer1"
+                             style="display: flex;align-items: center;justify-content: center;margin-top: 1%;height: 95%;width: 100%">
+                            {% include 'templates/AGV1F.html' %}
+                        </div>
+                        <div class="F1agv" id="contentContainer3"
+                             style="align-items: center;justify-content: center;margin-top: 1%;height: 95%;width: 100%;display: none">
+                            {% include 'templates/AGV3F.html' %}
+                        </div>
+                        <div class="F1agv" id="contentContainer4"
+                             style="align-items: center;justify-content: center;margin-top: 1%;height: 95%;width: 100%;display: none">
+                            {% include 'AGV4F.html' %}
+                        </div>
+                        <div class="F1agv" id="contentContainer5"
+                             style="align-items: center;justify-content: center;margin-top: 1%;height: 95%;width: 100%;display: none">
+                            {% include 'templates/AGV5F.html' %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <style type="text/css">
+                .linshi_zdy {
+                    position: absolute;
+                    right: 0px;
+                    top: 450px;
+                }
+
+                .linshi_zdy li {
+                    width: 150px;
+                    font-size: 16px;
+                    padding: 3px 8px;
+                    cursor: pointer;
+                }
+
+                .linshi_zdy span {
+                    display: block;
+                    width: 14px;
+                    height: 14px;
+                    float: left;
+                    border-radius: 50%;
+                    margin-top: 3px;
+                    margin-right: 5px;
+                }
+
+                .linshi_zdy li:first-child {
+                    color: #ff0000;
+                }
+
+                .linshi_zdy li:first-child span {
+                    background: #ff0000;
+                }
+
+                .linshi_zdy li:nth-child(2) {
+                    color: #9cff00;
+                }
+
+                .linshi_zdy li:nth-child(2) span {
+                    background: #9cff00;
+                }
+
+                .linshi_zdy li:nth-child(3) {
+                    color: #fff;
+                }
+
+                .linshi_zdy li:nth-child(3) span {
+                    background: #fff;
+                }
+
+                .linshi_zdy li:nth-child(4) {
+                    color: #f4a100;
+                }
+
+                .linshi_zdy li:nth-child(4) span {
+                    background: #f4a100;
+                }
+            </style>
+            <div class="main_right fr">
+            </div>
+        </div>
+        <div class="data_bottom">
+            <div class="bottom_1 fl t_btn5" style="cursor: pointer;">
+                <div class="t_line_box">
+                    <i class="t_l_line"></i>
+                    <i class="l_t_line"></i>
+                </div>
+                <div class="t_line_box">
+                    <i class="t_r_line"></i>
+                    <i class="r_t_line"></i>
+                </div>
+                <div class="t_line_box">
+                    <i class="l_b_line"></i>
+                    <i class="b_l_line"></i>
+                </div>
+                <div class="t_line_box">
+                    <i class="r_b_line"></i>
+                    <i class="b_r_line"></i>
+                </div>
+                <div class="main_title">
+                    <img src="{% static "/img/t_7.png" %}" alt="">
+                    磁条AGV数据详情
+                </div>
+                <div class="main_table t_btn8" style="display: flex">
+                    <div style="width: 20%;height: 20%;margin-top: 6%">
+                        <img style="width:100%;height:100%;margin-top: 6%"
+                             src="{% static "/img/car2.png" %}">
+                        <table>
+                            <tr style="background-color: #bd806b">
+                                <td style="font-size: 24px;font-weight: bold">总数</td>
+                                <td style="font-size: 24px;font-weight: bold">2</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="width: 80%;height: 80%;">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>功能</th>
+                                <th>状态</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr style="font-size: 104px">
+                                <td id="yian1">1#</td>
+                                <td>运送PCB</td>
+                                <td style="color: #c4bdbd;font-size: 18px" id="magnetism1">未知</td>
+                            </tr>
+                            <tr>
+                                <td id="yian2">2#</td>
+                                <td>运行PCB</td>
+                                <td style="color: #c4bdbd;font-size: 18px" id="magnetism2">未知</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="bottom_center fl">
+                <div class="bottom_2 fl">
+                    <div class="t_line_box">
+                        <i class="t_l_line"></i>
+                        <i class="l_t_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="t_r_line"></i>
+                        <i class="r_t_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="l_b_line"></i>
+                        <i class="b_l_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="r_b_line"></i>
+                        <i class="b_r_line"></i>
+                    </div>
+                    <div class="main_title" style="width:300px;left:40%;">
+                        <img src="{% static "/img/t_7.png" %}" alt="">
+                        滚筒AGV数据详情
+                    </div>
+                    <div class="main_table t_btn8" style="height: 250px;display: flex">
+                        <div style="width: 20%;height: 20%;margin-top: 11%;">
+                            <img style="width:70%;height: 80%;margin-top: 6%;margin-left: 5%"
+                                 src="{% static "/img/car1.png" %}">
+                            <table>
+                                <tr style="background-color: #bd806b">
+                                    <td style="font-size: 24px;font-weight: bold">总数</td>
+                                    <td style="font-size: 24px;font-weight: bold">9</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="mydiv" style="width: 80%;height: 100%;overflow-y: scroll">
+                            <table class="information">
+                                <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>功能</th>
+                                    <th>状态</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>3FPD</td>
+                                    <td>三厂SMT-PD对接</td>
+                                    <td style="color: #c4bdbd;font-size: 18px" id="roller3FPD">未知</td>
+                                </tr>
+                                <tr>
+                                    <td>3F01</td>
+                                    <td>S1L1运送载具</td>
+                                    <td style="color: #c4bdbd;font-size: 18px" id="roller3F01">未知</td>
+                                </tr>
+                                <tr>
+                                    <td>301X</td>
+                                    <td>PD302运送载具</td>
+                                    <td style="color: #c4bdbd;font-size: 18px" id="roller301X">未知</td>
+                                </tr>
+                                <tr>
+                                    <td>5F02</td>
+                                    <td>C1运送载具</td>
+                                    <td style="color: #c4bdbd;font-size: 18px" id="roller5F02">未知</td>
+                                </tr>
+                                <tr>
+                                    <td>5F03</td>
+                                    <td>C1运送载具</td>
+                                    <td style="color: #c4bdbd;font-size: 18px" id="roller5F03">未知</td>
+                                </tr>
+                                <tr>
+                                    <td>5F04</td>
+                                    <td>C1运送载具</td>
+                                    <td style="color: #c4bdbd;font-size: 18px" id="roller5F04">未知</td>
+                                </tr>
+                                <tr>
+                                    <td>5F05</td>
+                                    <td>C1运送载具</td>
+                                    <td style="color: #c4bdbd;font-size: 18px" id="roller5F05">未知</td>
+                                </tr>
+                                <tr>
+                                    <td>4F01</td>
+                                    <td>Controller运送载具</td>
+                                    <td style="color: #c4bdbd;font-size: 18px" id="roller4F01">未知</td>
+                                </tr>
+                                <tr>
+                                    <td>4F02</td>
+                                    <td>Controller运送</td>
+                                    <td style="color: #c4bdbd;font-size: 18px" id="roller4F02">未知</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="bottom_3 fl">
+                    <div class="t_line_box">
+                        <i class="t_l_line"></i>
+                        <i class="l_t_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="t_r_line"></i>
+                        <i class="r_t_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="l_b_line"></i>
+                        <i class="b_l_line"></i>
+                    </div>
+                    <div class="t_line_box">
+                        <i class="r_b_line"></i>
+                        <i class="b_r_line"></i>
+                    </div>
+                    <div class="main_title" style="width:260px;left:45%;">
+                        <img src="{% static "/img/t_7.png" %}" alt="">
+                        顶升式AGV数据详情
+                    </div>
+                    <div class="main_table t_btn2" style="display: flex">
+                        <div style="width: 20%;height: 20%;margin-top: 8%">
+                            <img style="width:70%;height: 80%;margin-top: 6%;margin-left: 5%"
+                                 src="{% static "/img/car1.png" %}">
+                            <table>
+                                <tr style="background-color: #bd806b">
+                                    <td style="font-size: 24px;font-weight: bold">总数</td>
+                                    <td style="font-size: 24px;font-weight: bold">3</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="width: 80%;height: 80%">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>功能</th>
+                                    <th>状态</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>3#</td>
+                                    <td>运送半成品PCBA</td>
+                                    <td style="color: #c4bdbd;font-size: 18px" id="jack3">未知</td>
+                                </tr>
+                                <tr>
+                                    <td>4#</td>
+                                    <td>运送半成品PCBA</td>
+                                    <td style="color: #c4bdbd;font-size: 18px" id="jack4">未知</td>
+                                </tr>
+                                <tr>
+                                    <td>5#</td>
+                                    <td>运送半成品PCBA</td>
+                                    <td style="color: #c4bdbd;font-size: 18px" id="jack5">未知</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom_4 fr">
+                <div class="t_line_box">
+                    <i class="t_l_line"></i>
+                    <i class="l_t_line"></i>
+                </div>
+                <div class="t_line_box">
+                    <i class="t_r_line"></i>
+                    <i class="r_t_line"></i>
+                </div>
+                <div class="t_line_box">
+                    <i class="l_b_line"></i>
+                    <i class="b_l_line"></i>
+                </div>
+                <div class="t_line_box">
+                    <i class="r_b_line"></i>
+                    <i class="b_r_line"></i>
+                </div>
+                <div class="main_title">
+                    <img src="{% static "/img/t_7.png" %}" alt="">
+                    叉车式AGV数据详情
+                </div>
+                <div class="main_table t_btn3 table_zdy" style="display: flex">
+                    <div style="width: 20%;height: 20%;margin-bottom: 10%">
+                        <img style="width:70%;height: 80%;margin-top: 10%;margin-left: 5%"
+                             src="{% static "/img/car3.png" %}">
+                        <table>
+                            <tr style="background-color: #bd806b">
+                                <td style="font-size: 24px;font-weight: bold">总数</td>
+                                <td style="font-size: 24px;font-weight: bold">1</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="width: 80%;height: 80%">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>功能</th>
+                                <th>状态</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>5F05</td>
+                                <td>运送栈板</td>
+                                <td style="color: #c4bdbd;font-size: 18px">未施工</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    <script src="/static/js/jquery-2.2.1.min.js"></script>
+    <script src="{% static 'js/jquery-2.2.1.min.js' %}"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script src="/static/js/datatool.js"></script>
+    <script src="/static/js/index.js"></script>
+    <script src="/static/js/guangxi.js"></script>
+    <script type="text/javascript">
+        //滚筒
+        setInterval(function () {
+            fetch('/roller_agv_sum')//发送请求到后端接口
+                .then(response => response.json())//将响应解析为JSON格式
+                .then(data => {//处理返回的数据
+                    var roller3FPD = document.getElementById("roller3FPD");
+                    var roller3F01 = document.getElementById("roller3F01");
+                    var roller301X = document.getElementById("roller301X");
+                    var roller5F02 = document.getElementById("roller5F02");
+                    var roller5F03 = document.getElementById("roller5F03");
+                    var roller5F04 = document.getElementById("roller5F04");
+                    var roller5F05 = document.getElementById("roller5F05");
+                    var roller4F01 = document.getElementById("roller4F01");
+                    var roller4F02 = document.getElementById("roller4F02");
+                    for (let item of data['rollerdata']) {
+                        if (item.carId === '3FPD') {
+                            if (Number(item.IsOnline) === 1) {
+                                //在线
+                                roller3FPD.innerHTML = "在线";
+                                roller3FPD.style.color = "#53ee53";
+                                roller3FPD.style.fontSize = "18px";
+                            } else {
+                                //不在线的时候
+                                roller3FPD.innerHTML = "不在线";
+                                roller3FPD.style.color = "#ce2e2e";
+                                roller3FPD.style.fontSize = "18px";
+                            }
+                        }
+                        if (item.carId === '3F01') {
+                            if (Number(item.IsOnline) === 1) {
+                                roller3F01.innerHTML = "在线";
+                                roller3F01.style.color = "#53ee53";
+                                roller3F01.style.fontSize = "18px";
+                            } else {
+                                roller3F01.innerHTML = "不在线";
+                                roller3F01.style.color = "#ce2e2e";
+                                roller3F01.style.fontSize = "18px";
+                            }
+                        }
+                        if (item.carId === '301X') {
+                            if (Number(item.IsOnline) === 1) {
+                                roller301X.innerHTML = "在线";
+                                roller301X.style.color = "#53ee53";
+                                roller301X.style.fontSize = "18px";
+                            } else {
+                                roller301X.innerHTML = "不在线";
+                                roller301X.style.color = "#ce2e2e";
+                                roller301X.style.fontSize = "18px";
+                            }
+                        }
+                        if (item.carId === '5F02') {
+                            if (Number(item.IsOnline) === 1) {
+                                roller5F02.innerHTML = "在线";
+                                roller5F02.style.color = "#53ee53";
+                                roller5F02.style.fontSize = "18px";
+                            } else {
+                                roller5F02.innerHTML = "不在线";
+                                roller5F02.style.color = "#ce2e2e";
+                                roller5F02.style.fontSize = "18px";
+                            }
+                        }
+                        if (item.carId === '5F03') {
+                            if (Number(item.IsOnline) === 1) {
+                                roller5F03.innerHTML = "在线";
+                                roller5F03.style.color = "#53ee53";
+                                roller5F03.style.fontSize = "18px";
+                            } else {
+                                roller5F03.innerHTML = "不在线";
+                                roller5F03.style.color = "#ce2e2e";
+                                roller5F03.style.fontSize = "18px";
+                            }
+                        }
+                        if (item.carId === '5F04') {
+                            if (Number(item.IsOnline) === 1) {
+                                roller5F04.innerHTML = "在线";
+                                roller5F04.style.color = "#53ee53";
+                                roller5F04.style.fontSize = "18px";
+                            } else {
+                                roller5F04.innerHTML = "不在线";
+                                roller5F04.style.color = "#ce2e2e";
+                                roller5F04.style.fontSize = "18px";
+                            }
+                        }
+                        if (item.carId === '5F05') {
+                            if (Number(item.IsOnline) === 1) {
+                                roller5F05.innerHTML = "在线";
+                                roller5F05.style.color = "#53ee53";
+                                roller5F05.style.fontSize = "18px";
+                            } else {
+                                roller5F05.innerHTML = "不在线";
+                                roller5F05.style.color = "#ce2e2e";
+                                roller5F05.style.fontSize = "18px";
+                            }
+                        }
+                        if (item.carId === '4F01') {
+                            if (Number(item.IsOnline) === 1) {
+                                roller4F01.innerHTML = "在线";
+                                roller4F01.style.color = "#53ee53";
+                                roller4F01.style.fontSize = "18px";
+                            } else {
+                                roller4F01.innerHTML = "不在线";
+                                roller4F01.style.color = "#ce2e2e";
+                                roller4F01.style.fontSize = "18px";
+                            }
+                        }
+                        if (item.carId === '4F02') {
+                            if (Number(item.IsOnline) === 1) {
+                                roller4F02.innerHTML = "在线";
+                                roller4F02.style.color = "#53ee53";
+                                roller4F02.style.fontSize = "18px";
+                            } else {
+                                roller4F02.innerHTML = "不在线";
+                                roller4F02.style.color = "#ce2e2e";
+                                roller4F02.style.fontSize = "18px";
+                            }
+                        }
+                    }
+                    console.log(data);//打印数据到控制台
+                })
+                .catch(error => {//处理请求错误
+                    console.error('Error:', error);
+                })
+        }, 10000)
+        setInterval(function () {
+            fetch('/agv_route_sum')//发送请求到后端接口
+                .then(response => response.json())//将响应解析为JSON格式
+                .then(data => {//处理返回的数据
+                    console.log("大爷的，死哪儿去了1:", typeof data);
+                    var jack3 = document.getElementById("jack3");
+                    var jack4 = document.getElementById("jack4");
+                    var jack5 = document.getElementById("jack5");
+                    for (let item of data['data']) {
+                        if (Number(item.AgvID) === 3) {
+                            if (item.IsOnline == true) {
+                                //在线
+                                //style="color: #53ee53;font-size: 18px" id="jack5"
+                                jack3.innerHTML = "在线";
+                                jack3.style.color = "#53ee53";
+                                jack3.style.fontSize = "18px";
+                            } else {
+                                //不在线的时候
+                                jack3.innerHTML = "不在线";
+                                jack3.style.color = "#ce2e2e";
+                                jack3.style.fontSize = "18px";
+                                {#console.log("大爷的，死哪儿去了:", typeof item.IsOnline);#}
+                            }
+                        }
+                        if (Number(item.AgvID) === 4) {
+                            if (item.IsOnline == true) {
+                                jack4.innerHTML = "在线";
+                                jack4.style.color = "#53ee53";
+                                jack4.style.fontSize = "18px";
+                            } else {
+                                jack4.innerHTML = "不在线";
+                                jack4.style.color = "#ce2e2e";
+                                jack4.style.fontSize = "18px";
+                            }
+                        }
+                        if (Number(item.AgvID) === 5) {
+                            if (item.IsOnline == true) {
+                                jack5.innerHTML = "在线";
+                                jack5.style.color = "#53ee53";
+                                jack5.style.fontSize = "18px";
+                            } else {
+                                jack5.innerHTML = "不在线";
+                                jack5.style.color = "#ce2e2e";
+                                jack5.style.fontSize = "18px";
+                            }
+                        }
+                    }
+                    //alert(JSON.stringify(data));//打印出后端传过来的全部数据
+                    console.log(data);//打印    数据到控制台
+                })
+                .catch(error => {//处理请求错误
+                    console.error('Error:', error);
+                })
+        }, 40000)
+        setInterval(function () {
+            fetch('/magnetism_agv_route_sum')//发送请求到后端接口
+                .then(response => response.json())//将响应解析为JSON格式
+                .then(data => {//处理返回的数据
+                    var magnetism1 = document.getElementById("magnetism1");
+                    var magnetism2 = document.getElementById("magnetism2");
+                    for (let item of data['magnetismdata']) {
+                        if (Number(item.AgvID) === 1) {
+                            if (item.IsOnline == true) {
+                                //在线
+                                magnetism1.innerHTML = "在线";
+                                magnetism1.style.color = "#53ee53";
+                                magnetism1.style.fontSize = "18px";
+                            } else {
+                                //不在线的时候
+                                magnetism1.innerHTML = "不在线";
+                                magnetism1.style.color = "#ce2e2e";
+                                magnetism1.style.fontSize = "18px";
+                            }
+                        }
+                        if (Number(item.AgvID) === 2) {
+                            //console.log("大爷的，死哪儿去了:", typeof item.IsOnline);
+                            //console.log("大爷的，死哪儿去了:", item.IsOnline);
+                            if (item.IsOnline == true) {
+                                magnetism2.innerHTML = "在线";
+                                magnetism2.style.color = "#53ee53";
+                                magnetism2.style.fontSize = "18px";
+                            } else {
+                                magnetism2.innerHTML = "不在线";
+                                magnetism2.style.color = "#ce2e2e";
+                                magnetism2.style.fontSize = "18px";
+                            }
+                        }
+                    }
+                    console.log(data);//打印数据到控制台
+                })
+                .catch(error => {//处理请求错误
+                    console.error('Error:', error);
+                })
+        }, 40000)
+
+        let floor1 = document.getElementById("floor1");
+        let floor3 = document.getElementById("floor3");
+        let floor4 = document.getElementById("floor4");
+        let floor5 = document.getElementById("floor5");
+        let contentContainer1 = document.getElementById("contentContainer1");
+        let contentContainer3 = document.getElementById("contentContainer3");
+        let contentContainer4 = document.getElementById("contentContainer4");
+        let contentContainer5 = document.getElementById("contentContainer5");
+        floor1.addEventListener('click', function () {
+            contentContainer1.style.display = "flex";
+            contentContainer3.style.display = "none";
+            contentContainer4.style.display = "none";
+            contentContainer5.style.display = "none";
+            console.log("这是什么破玩意儿呀，我就服了，死活出不来，是想上天吗？天啦");
+        });
+        floor3.addEventListener('click', function () {
+            console.log("这是什么破玩意儿呀，我就服了，死活出不来，是想上天吗？天啦");
+            contentContainer1.style.display = "none";
+            contentContainer3.style.display = "flex";
+            contentContainer4.style.display = "none";
+            contentContainer5.style.display = "none";
+        });
+        floor4.addEventListener('click', function () {
+            contentContainer1.style.display = "none";
+            contentContainer3.style.display = "none";
+            contentContainer4.style.display = "flex";
+            contentContainer5.style.display = "none";
+        });
+        floor5.addEventListener('click', function () {
+            contentContainer1.style.display = "none";
+            contentContainer3.style.display = "none";
+            contentContainer4.style.display = "none";
+            contentContainer5.style.display = "flex";
+        })
+
+    </script>
+    </html>
+{% endblock %}

@@ -1,0 +1,11 @@
+{
+  "base_url": "/",
+  "hostname": "localhost",
+  "notebook_dir": "C:\\Users\\PSZ",
+  "password": false,
+  "pid": 4000,
+  "port": 8888,
+  "secure": false,
+  "token": "0907017648206893dd2fde6a1fa98cd1aed3ca1d28734148",
+  "url": "http://localhost:8888/"
+}
